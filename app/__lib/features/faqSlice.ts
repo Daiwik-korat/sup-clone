@@ -15,6 +15,12 @@ const FAQ_QUERY = `
 export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
   "faq/fetchfaq",
   async () => {
+    const URL: string = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+    const name: string = process.env.NEXT_PUBLIC_LINK_NAME;
+
+    if (!URL || !name) {
+      throw new Error("Environment variables not defined");
+    }
     const res = await fetch(
       "https://api-staging.care360-next.carevalidate.com/graphql/",
       {
@@ -25,7 +31,7 @@ export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
           variables: { linkName: "senavida" },
         }),
         cache: "no-store",
-      }
+      },
     );
 
     const json = await res.json();
@@ -38,7 +44,7 @@ export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
     }));
 
     return faqs;
-  }
+  },
 );
 
 interface FAQState {

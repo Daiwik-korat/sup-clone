@@ -1,0 +1,122 @@
+import FeatVids from "./featVids.tsx";
+
+function FeatureHighlight() {
+  return (
+    <>
+      <section className="relative z-10 bg-white w-full rounded-[70px] -mt-20 md:-mt-10 lg:mt-0 px-2 pt-30">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          className="absolute top-4 left-1/2 -translate-x-1/2 lg:hidden"
+        >
+          <path
+            d="M5.8335 5L10.0002 9.16667L14.1668 5M5.8335 10.8333L10.0002 15L14.1668 10.8333"
+            stroke="#A1A1AA"
+            strokeWidth="1.45833"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+
+        <div className="hidden md:flex flex-row gap-2 lg:gap-8 xl:gap-12 items-start justify-center">
+          
+          {/* Feature 1 */}
+          <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <svg
+                width="21"
+                height="16"
+                viewBox="0 0 21 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+              >
+                <path
+                  d="M8.95 11.5C9.35 11.9 9.86667 12.0957 10.5 12.087C11.1333 12.079 11.6 11.85 11.9 11.4L16.125 5.075C16.275 4.84167 16.254 4.62933 16.062 4.438C15.8707 4.246 15.6583 4.225 15.425 4.375L9.1 8.6C8.65 8.9 8.41267 9.35833 8.388 9.975C8.36267 10.5917 8.55 11.1 8.95 11.5ZM3.6 16C3.25 16 2.91667 15.9167 2.6 15.75C2.28333 15.5833 2.03333 15.35 1.85 15.05C1.41667 14.3 1.08333 13.5043 0.85 12.663C0.616667 11.821 0.5 10.9333 0.5 10C0.5 8.61667 0.762667 7.32067 1.288 6.112C1.81267 4.904 2.52933 3.84567 3.438 2.937C4.346 2.029 5.40833 1.31233 6.625 0.787C7.84167 0.262334 9.13333 0 10.5 0C11.25 0 11.975 0.079 12.675 0.237C13.375 0.395667 14.05 0.633333 14.7 0.95C15.05 1.13333 15.254 1.38333 15.312 1.7C15.3707 2.01667 15.2833 2.31667 15.05 2.6C14.9167 2.75 14.7333 2.84167 14.5 2.875C14.2667 2.90833 14.0583 2.88333 13.875 2.8C13.3417 2.53333 12.7917 2.33333 12.225 2.2C11.6583 2.06667 11.0833 2 10.5 2C8.28333 2 6.396 2.779 4.838 4.337C3.27933 5.89567 2.5 7.78333 2.5 10C2.5 10.7 2.59567 11.3917 2.787 12.075C2.979 12.7583 3.25 13.4 3.6 14H17.4C17.7833 13.3667 18.0627 12.7083 18.238 12.025C18.4127 11.3417 18.5 10.6333 18.5 9.9C18.5 9.31667 18.4293 8.746 18.288 8.188C18.146 7.62933 17.9417 7.09167 17.675 6.575C17.5583 6.35833 17.525 6.13333 17.575 5.9C17.625 5.66667 17.7417 5.475 17.925 5.325C18.1917 5.09167 18.4833 5.025 18.8 5.125C19.1167 5.225 19.35 5.44167 19.5 5.775C19.8 6.40833 20.0333 7.06267 20.2 7.738C20.3667 8.41267 20.4667 9.11667 20.5 9.85C20.5 10.8 20.3877 11.7083 20.163 12.575C19.9377 13.4417 19.6 14.2667 19.15 15.05C18.9667 15.35 18.7167 15.5833 18.4 15.75C18.0833 15.9167 17.75 16 17.4 16H3.6Z"
+                  fill="black"
+                ></path>
+              </svg>
+              <p className="font-medium whitespace-nowrap">No wait times</p>
+            </div>
+            <p className="w-60 text-center text-sm text-gray-600">
+              Less than 15 minute lab visit
+            </p>
+          </div>
+
+          {/* Feature 2 */}
+          <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <svg
+                width="20"
+                height="18"
+                viewBox="0 0 20 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M18 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H18C19.1 18 20 17.1 20 16V2C20 0.9 19.1 0 18 0ZM7 14H4C3.45 14 3 13.55 3 13C3 12.45 3.45 12 4 12H7C7.55 12 8 12.45 8 13C8 13.55 7.55 14 7 14ZM7 10H4C3.45 10 3 9.55 3 9C3 8.45 3.45 8 4 8H7C7.55 8 8 8.45 8 9C8 9.55 7.55 10 7 10ZM7 6H4C3.45 6 3 5.55 3 5C3 4.45 3.45 4 4 4H7C7.55 4 8 4.45 8 5C8 5.55 7.55 6 7 6ZM16.7 8.12L13.53 11.29C13.14 11.68 12.5 11.68 12.11 11.29L10.7 9.87C10.31 9.48 10.31 8.85 10.7 8.46C11.09 8.07 11.72 8.07 12.11 8.46L12.82 9.17L15.29 6.7C15.68 6.31 16.31 16.31 16.7 6.7L16.71 6.71C17.09 7.1 17.09 7.74 16.7 8.12Z"
+                  fill="black"
+                ></path>
+              </svg>
+              <p className="font-medium whitespace-nowrap">Fast results</p>
+            </div>
+            <p className="w-60 text-center text-sm text-gray-600">
+              Get your results within a week
+            </p>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <svg
+                width="16"
+                height="18"
+                viewBox="0 0 16 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+              >
+                <path
+                  d="M0.600098 12.43C0.600098 11.78 1.2001 11.3 1.8401 11.44L5.4001 12.24V1.5C5.4001 0.67 6.0701 0 6.9001 0C7.7301 0 8.4001 0.67 8.4001 1.5V7.5H9.3101C9.6201 7.5 9.9301 7.57 10.2001 7.71L14.2901 9.75C15.0601 10.13 15.5001 10.97 15.3801 11.82L14.7501 16.28C14.6101 17.27 13.7601 18 12.7701 18H6.6101C6.0801 18 5.3201 17.79 4.9501 17.41L0.880098 13.12C0.700098 12.94 0.600098 12.69 0.600098 12.43Z"
+                  fill="black"
+                ></path>
+              </svg>
+              <p className="font-medium whitespace-nowrap">Simple and convenient</p>
+            </div>
+            <p className="w-64 text-center text-sm text-gray-600">
+              Book your test at over 2,000+ locations
+            </p>
+          </div>
+        </div>
+
+        <div className="relative flex flex-col items-center justify-center max-w-3xl mx-auto mt-20 space-y-6">
+          <p className="font-semibold text-2xl sm:text-3xl lg:text-4xl -mt-15 sm:mt-8 lg:mt-10">
+            It Starts with 100+ labs
+          </p>
+          <p className="flex text-center text-gray-600 text-base sm:text-lg">
+            From heart health to hormone balance our comprehensive test panels
+            detect early signs of over 1,000 conditions
+          </p>
+          <button className="flex justify-center items-center w-52 h-14 rounded-full gap-2 hover:bg-gray-100 transition border border-gray-200">
+            <p>Explore all biomarkers</p>
+            <img
+              src="/explorebiomarkarrow.svg"
+              className="w-4 h-4 mt-1.5"
+              alt="arrow"
+            />
+          </button>
+        </div>
+
+        <FeatVids />
+      </section>
+    </>
+  );
+}
+
+export default FeatureHighlight;

@@ -1,4 +1,3 @@
-// ./app/__lib/productSlice.ts
 import { configureStore } from "@reduxjs/toolkit";
 import productsReducer from "./features/productSlice";
 import faqReducer from "./features/faqSlice"

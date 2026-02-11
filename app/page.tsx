@@ -1,5 +1,6 @@
-import Navbar from "../components/navbar";
+import Navbar from "../components/header/navbar";
 import Hero from "../components/Hero";
+import FeatureHighlight from "../components/featureHighlights/featureHighlight";
 
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
+      <FeatureHighlight/>
     </>
   );
 }

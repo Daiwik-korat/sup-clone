@@ -3,15 +3,12 @@
 import Link from "next/link";
 import { useMemo, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsThunk } from "../app/__lib/features/productSlice";
+import { fetchProductsThunk } from "../../app/__lib/features/productSlice";
 import { RootState, AppDispatch } from "@/app/__lib/store";
 import { CatProducts } from "./category";
 import Category from "./category";
-import { GroupedData, Product } from "../app/__lib/types";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
+import { GroupedData, Product } from "../../app/__lib/types";
 
-gsap.registerPlugin(useGSAP);
 
 function Navbar() {
   const [isSmall, setIsSmall] = useState<boolean>(false);
@@ -97,7 +94,7 @@ function Navbar() {
           </div>
         </div>
         {isSmall && (
-          <div className="flex items-center justify-center gap-10 text-white">
+          <div className="flex max-lg:hidden items-center justify-center gap-10 text-white">
             {productLoading ? (
               <div className="text-gray-200 animate-pulse"> Loading </div>
             ) : (
@@ -105,6 +102,7 @@ function Navbar() {
                 <Category
                   key={item.categoryName}
                   data={item}
+                  hoveredCategory={hoveredCategory}
                   onMouseEnter={() => setHoveredCategory(item)}
                 />
               ))
