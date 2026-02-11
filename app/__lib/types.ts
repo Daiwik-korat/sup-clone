@@ -13,3 +13,8 @@ export interface FAQ  {
   answer: string;
   question: string;
 };
+
+export interface GroupedData {
+   categoryName: string,
+   products:Product[],
+}

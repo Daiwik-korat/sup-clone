@@ -1,5 +1,6 @@
 "use client";
 import Join from "./JoinButton.tsx";
+import Image from "next/image"
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -62,15 +63,15 @@ function Hero() {
             <br />
             conditions. All for only $17/month
           </p>
-
           <div className="mt-8">
             <Join />
           </div>
-
-          <img
+          <Image
             src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/689c37321e74752df5514537_hsa-fsa.svg"
             className="mt-8 w-24 md:w-28"
-            alt="NO URL RESPONSE"
+            alt="HSA/FSA eligible"
+            width={112}
+            height={112}
           />
         </div>
       </main>

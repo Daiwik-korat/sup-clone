@@ -1,19 +1,52 @@
 // ./components/navbar.tsx
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsThunk } from "../app/__lib/features/productSlice";
 import { RootState, AppDispatch } from "@/app/__lib/store";
+import { CatProducts } from "./category";
+import Category from "./category";
+import { GroupedData, Product } from "../app/__lib/types";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 function Navbar() {
-  const [isSmall, setIsSmall] = useState(false);
+  const [isSmall, setIsSmall] = useState<boolean>(false);
+  const [hoveredCategory, setHoveredCategory] = useState<GroupedData | null>(
+    null,
+  );
 
   const dispatch = useDispatch<AppDispatch>();
+
   const { productBundle, loading: productLoading } = useSelector(
     (state: RootState) => state.products,
   );
- 
+
+  const groupedData: GroupedData[] = useMemo(() => {
+    if (!productBundle.products || productBundle.products.length === 0)
+      return [];
+
+    const categories = [
+      ...new Set(productBundle.products.map((item: Product) => item.tag)),
+    ];
+
+    const temp = categories.map((catName) => {
+      const matchingProducts = productBundle.products.filter(
+        (product: Product) => product.tag === catName,
+      );
+
+      return {
+        categoryName: catName,
+        products: matchingProducts,
+      };
+    });
+
+    return temp;
+  }, [productBundle.products]);
+
   useEffect(() => {
     const handleResize = () => {
       setIsSmall(window.innerWidth >= 991);
@@ -22,19 +55,30 @@ function Navbar() {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    if (productBundle.products.length === 0) { // Makes Sure that if not keep on making API req when data is already available during rerender
+    if (productBundle.products.length === 0) {
       dispatch(fetchProductsThunk());
     }
 
     return () => window.removeEventListener("resize", handleResize);
   }, [dispatch, productBundle.products.length]);
 
+
+
+  const handleHeaderLeave = () => {
+    setTimeout(() => {
+      setHoveredCategory(null); 
+    }, 200);
+  };
+
   return (
     <>
-      <header className="bg-[#000000b3] opacity-0.4 fixed inset-x-0 z-999 h-15 lg:h-18 flex justify-between w-full max-[991px]:backdrop-blur-md min-[991px]:w-[95%] px-5 min-[991px]:rounded-full items-stretch max-w-[85rem] min-[991px]:mt-8 min-[991px]:pl-6 pb-[0] min-[991px]:pr-[0.5rem] min-[991px]:mx-auto">
+      <header
+        onMouseLeave={handleHeaderLeave}
+        className="bg-[#000000b3] opacity-0.4 fixed inset-x-0 z-999 h-15 lg:h-18 flex justify-between w-full max-[991px]:backdrop-blur-md min-[991px]:w-[95%] px-5 min-[991px]:rounded-full items-center max-w-[85rem] min-[991px]:mt-8 min-[991px]:pl-6 pb-[0] min-[991px]:pr-[0.5rem] min-[991px]:mx-auto"
+      >
         {" "}
         <div className="flex-1 flex items-center justify-start mt-2">
-          <div className="w-32 lg:w-40" onClick={() => {}}>
+          <div className="w-32 lg:w-40">
             <Link href="/">
               <svg
                 width="100%"
@@ -53,17 +97,46 @@ function Navbar() {
           </div>
         </div>
         {isSmall && (
-          <div className="flex items-center justify-center text-white">
-            Rendered Catagories
+          <div className="flex items-center justify-center gap-10 text-white">
+            {productLoading ? (
+              <div className="text-gray-200 animate-pulse"> Loading </div>
+            ) : (
+              groupedData.map((item) => (
+                <Category
+                  key={item.categoryName}
+                  data={item}
+                  onMouseEnter={() => setHoveredCategory(item)}
+                />
+              ))
+            )}
           </div>
         )}
+        {hoveredCategory && (
+          <CatProducts
+            products={hoveredCategory.products}
+            onMouseExit={() => setHoveredCategory(null)}
+          />
+        )}
         <div className="flex-1 flex items-center gap-6 justify-end text-white">
-          <button> Login </button>
+          <Link
+            className="cursor-pointer tracking-tight transition-transform hover:scale-110 inline-block"
+            href={
+              "https://app.superpower.com/signin?_gl=1*vr879l*_gcl_au*MTA1MTExMDM5LjE3NzAwMTMwMDk.*_ga*Mjk0MjA1NTQ4LjE3NzAwMTMwMDk.*_ga_BT53JGR46J*czE3NzA3MTU4MjYkbzMwJGcxJHQxNzcwNzE2MDY1JGoxOCRsMCRoMA.."
+            }
+          >
+            Login
+          </Link>
           {isSmall && (
-            <button className="rounded-full bg-[#fc5f2b] px-[1.25rem] md:py-[0.7rem] lg:py-[1rem] text-base border border-black tracking-[-0.0125em]">
-              {" "}
-              Try Superpower{" "}
-            </button>
+            <Link
+              href="https://superpower.com/checkout"
+              className="cursor-pointer whitespace-nowrap rounded-full bg-[#fc5f2b] 
+               px-3 py-2 text-sm          
+               md:px-5 md:text-base     
+               lg:py-4                    
+               border border-black transition-transform hover:scale-110 inline-block"
+            >
+              Try Superpower
+            </Link>
           )}
         </div>
       </header>
