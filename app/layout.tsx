@@ -1,14 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import StoreProvider from "./__lib/StoreProvider";
-
+import StoreInitializer from "./__lib/StoreInitializer"; 
 import "./globals.css";
-import { ReactReduxContext } from "react-redux";
-
-const nbInternational = localFont({
-  src: "../public/fonts/nb-regular.otf",
-  variable: "--font-nb",
-});
 
 export const metadata: Metadata = {
   title: "Superpower | Unlock your new health intelligence | Biomarker Testing",
@@ -23,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <StoreInitializer />
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );
