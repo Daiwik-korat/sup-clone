@@ -1,18 +1,22 @@
 // ./components/navbar.tsx
 "use client";
 import Link from "next/link";
-import { useMemo, useState} from "react";
-import { useSelector } from "react-redux";
-import { RootState} from "@/app/__lib/store";
+import { useMemo, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductsThunk } from "../../app/__lib/features/productSlice";
+import { RootState, AppDispatch } from "@/app/__lib/store";
 import { CatProducts } from "./category";
 import Category from "./category";
 import { GroupedData, Product } from "../../app/__lib/types";
 
+
 function Navbar() {
+  const [isSmall, setIsSmall] = useState<boolean>(false);
   const [hoveredCategory, setHoveredCategory] = useState<GroupedData | null>(
     null,
   );
 
+  const dispatch = useDispatch<AppDispatch>();
 
   const { productBundle, loading: productLoading } = useSelector(
     (state: RootState) => state.products,
@@ -40,9 +44,26 @@ function Navbar() {
     return temp;
   }, [productBundle.products]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmall(window.innerWidth >= 991);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    if (productBundle.products.length === 0) {
+      dispatch(fetchProductsThunk());
+    }
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [dispatch, productBundle.products.length]);
+
+
+
   const handleHeaderLeave = () => {
     setTimeout(() => {
-      setHoveredCategory(null);
+      setHoveredCategory(null); 
     }, 200);
   };
 
@@ -50,7 +71,7 @@ function Navbar() {
     <>
       <header
         onMouseLeave={handleHeaderLeave}
-        className="bg-[#000000b3] opacity-0.4 fixed inset-x-0 z-999 h-15 lg:h-18 flex justify-between w-full max-[1024px]:backdrop-blur-md lg:w-[95%] px-5 lg:rounded-full items-center max-w-[85rem] lg:mt-8 lg:pl-6 pb-[0] lg:pr-[0.5rem] lg:mx-auto"
+        className="bg-[#000000b3] opacity-0.4 fixed inset-x-0 z-999 h-15 lg:h-18 flex justify-between w-full max-[991px]:backdrop-blur-md min-[991px]:w-[95%] px-5 min-[991px]:rounded-full items-center max-w-[85rem] min-[991px]:mt-8 min-[991px]:pl-6 pb-[0] min-[991px]:pr-[0.5rem] min-[991px]:mx-auto"
       >
         {" "}
         <div className="flex-1 flex items-center justify-start mt-2">
@@ -72,20 +93,22 @@ function Navbar() {
             </Link>
           </div>
         </div>
-        <div className="flex hidden lg:block items-center justify-center gap-10 text-white">
-          {productLoading ? (
-            <div className="text-gray-200 animate-pulse"> Loading </div>
-          ) : (
-            groupedData.map((item) => (
-              <Category
-                key={item.categoryName}
-                data={item}
-                hoveredCategory={hoveredCategory}
-                onMouseEnter={() => setHoveredCategory(item)}
-              />
-            ))
-          )}
-        </div>
+        {isSmall && (
+          <div className="flex max-lg:hidden items-center justify-center gap-10 text-white">
+            {productLoading ? (
+              <div className="text-gray-200 animate-pulse"> Loading </div>
+            ) : (
+              groupedData.map((item) => (
+                <Category
+                  key={item.categoryName}
+                  data={item}
+                  hoveredCategory={hoveredCategory}
+                  onMouseEnter={() => setHoveredCategory(item)}
+                />
+              ))
+            )}
+          </div>
+        )}
         {hoveredCategory && (
           <CatProducts
             products={hoveredCategory.products}
@@ -101,7 +124,7 @@ function Navbar() {
           >
             Login
           </Link>
-          <div className="lg:block hidden">
+          {isSmall && (
             <Link
               href="https://superpower.com/checkout"
               className="cursor-pointer whitespace-nowrap rounded-full bg-[#fc5f2b] 
@@ -112,7 +135,7 @@ function Navbar() {
             >
               Try Superpower
             </Link>
-          </div>
+          )}
         </div>
       </header>
     </>

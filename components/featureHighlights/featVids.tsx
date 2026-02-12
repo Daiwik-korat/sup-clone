@@ -1,111 +1,68 @@
-"use client"
 import Image from "next/image";
-import { gsap} from "gsap/all";
-import { useGSAP } from "@gsap/react";
 
 function FeatVids() {
-  useGSAP(() => {
-    gsap.fromTo(
-      "#items",
-      {
-        scale: 1.3,
-        filter: "blur(50px)",
-        opacity: 0, 
-      },
-      {
-        scale: 1,
-        filter: "blur(0px)",
-        opacity: 1,
-        duration: 0.7,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "#items", 
-          start: "top 80%",
-          toggleActions: "play none none none", 
-        },
-      },
-    );
-  });
-
   return (
-    <>
-      <section id="items">
-        <div className="relative flex flex-col items-center justify-center max-w-3xl mx-auto mt-20 space-y-6">
-          <p className="font-semibold text-2xl sm:text-3xl lg:text-4xl -mt-15 sm:mt-8 lg:mt-10">
-            It Starts with 100+ labs
-          </p>
-          <p className="flex text-center text-gray-600 text-base sm:text-lg">
-            From heart health to hormone balance our comprehensive test panels
-            detect early signs of over 1,000 conditions
-          </p>
-          <button className="flex justify-center items-center w-52 h-14 rounded-full gap-2 hover:bg-gray-100 transition border border-gray-200">
-            <p>Explore all biomarkers</p>
-            <img
-              src="/explorebiomarkarrow.svg"
-              className="w-4 h-4 mt-1.5"
-              alt="arrow"
+    <div className="relative w-full overflow-hidden py-10">
+      
+      <div className="hidden sm:flex justify-center items-center w-full">
+        <div className="relative w-[60%] mx-auto">
+          
+          <div className="absolute top-0 bottom-0 right-[100%] mr-4 flex items-center justify-end">
+            <Image
+              src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a7a9565b28afd609739daa_Superpower%20Score.avif"
+              width={0}
+              height={0}
+              sizes="30vw"
+              alt="Feature Photo 1"
+              className="h-full w-auto max-w-none object-contain"
             />
-          </button>
-        </div>
-        <div className="relative w-full overflow-hidden py-10">
-          <div className="hidden sm:flex justify-center items-center w-full">
-            <div className="relative w-[60%] mx-auto">
-              <div className="absolute top-0 bottom-0 right-[100%] mr-4 flex items-center justify-end">
-                <Image
-                  src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a7a9565b28afd609739daa_Superpower%20Score.avif"
-                  width={0}
-                  height={0}
-                  sizes="30vw"
-                  alt="Feature Photo 1"
-                  className="h-full w-auto max-w-none object-contain"
-                />
-              </div>
-
-              <Tablet />
-
-              <div className="absolute top-0 bottom-0 left-[100%] ml-4 flex items-center justify-start">
-                <Image
-                  src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a7a91e594b8d4029a38fb8_Group%201410124615.avif"
-                  width={0}
-                  height={0}
-                  sizes="30vw"
-                  alt="Feature Photo 2"
-                  className="h-full w-auto max-w-none object-contain"
-                />
-              </div>
-            </div>
           </div>
 
-          <div className="block sm:hidden w-full">
-            <div className="relative w-[50%] mx-auto">
-              <div className="absolute top-0 bottom-0 right-[100%] mr-2 flex items-center justify-end">
-                <Image
-                  src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a8fbd1251843351bf65078_Frame.avif"
-                  width={0}
-                  height={0}
-                  sizes="30vw"
-                  alt="Feature Photo 1"
-                  className="h-full w-auto max-w-none object-contain object-right"
-                />
-              </div>
+          <Tablet />
 
-              <Phone />
-
-              <div className="absolute top-0 bottom-0 left-[100%] ml-2 flex items-center justify-start">
-                <Image
-                  src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a7a9565b28afd609739daa_Superpower%20Score.avif"
-                  width={0}
-                  height={0}
-                  sizes="30vw"
-                  alt="Feature Photo 2"
-                  className="h-full w-auto max-w-none object-contain object-left"
-                />
-              </div>
-            </div>
+          <div className="absolute top-0 bottom-0 left-[100%] ml-4 flex items-center justify-start">
+            <Image
+              src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a7a91e594b8d4029a38fb8_Group%201410124615.avif"
+              width={0}
+              height={0}
+              sizes="30vw"
+              alt="Feature Photo 2"
+              className="h-full w-auto max-w-none object-contain"
+            />
           </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      <div className="block sm:hidden w-full">
+         <div className="relative w-[50%] mx-auto">
+          
+          <div className="absolute top-0 bottom-0 right-[100%] mr-2 flex items-center justify-end">
+            <Image
+              src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a8fbd1251843351bf65078_Frame.avif"
+              width={0}
+              height={0}
+              sizes="30vw"
+              alt="Feature Photo 1"
+              className="h-full w-auto max-w-none object-contain object-right"
+            />
+          </div>
+
+          <Phone />
+
+          <div className="absolute top-0 bottom-0 left-[100%] ml-2 flex items-center justify-start">
+            <Image
+              src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a7a9565b28afd609739daa_Superpower%20Score.avif"
+              width={0}
+              height={0}
+              sizes="30vw"
+              alt="Feature Photo 2"
+              className="h-full w-auto max-w-none object-contain object-left"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
   );
 
   function Tablet() {
