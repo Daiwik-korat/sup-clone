@@ -1,6 +1,33 @@
+"use client";
+import { gsap } from "gsap";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { useGSAP } from "@gsap/react";
 import FeatVids from "./featVids.tsx";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function FeatureHighlight() {
+  useGSAP(() => {
+    gsap.fromTo("#lab", 
+      {
+        scale:1.4,
+        filter:"blur(8px)",
+        opacity: 0
+      },
+      {
+        scale:1,
+        opacity: 1,
+        filter:"blur(0px)",
+        scrollTrigger: {
+            trigger: "#lab",
+            start: "top 80%",
+            end: "bottom top",
+          },
+      },
+    );
+  });
   return (
     <>
       <section className="relative z-10 bg-white w-full rounded-[70px] -mt-20 md:-mt-10 lg:mt-0 px-2 pt-30">
@@ -22,8 +49,6 @@ function FeatureHighlight() {
         </svg>
 
         <div className="hidden md:flex flex-row gap-2 lg:gap-8 xl:gap-12 items-start justify-center">
-          
-          {/* Feature 1 */}
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <svg
@@ -46,7 +71,6 @@ function FeatureHighlight() {
             </p>
           </div>
 
-          {/* Feature 2 */}
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <svg
@@ -71,7 +95,6 @@ function FeatureHighlight() {
             </p>
           </div>
 
-          {/* Feature 3 */}
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <svg
@@ -87,7 +110,9 @@ function FeatureHighlight() {
                   fill="black"
                 ></path>
               </svg>
-              <p className="font-medium whitespace-nowrap">Simple and convenient</p>
+              <p className="font-medium whitespace-nowrap">
+                Simple and convenient
+              </p>
             </div>
             <p className="w-64 text-center text-sm text-gray-600">
               Book your test at over 2,000+ locations
@@ -95,25 +120,27 @@ function FeatureHighlight() {
           </div>
         </div>
 
-        <div className="relative flex flex-col items-center justify-center max-w-3xl mx-auto mt-20 space-y-6">
-          <p className="font-semibold text-2xl sm:text-3xl lg:text-4xl -mt-15 sm:mt-8 lg:mt-10">
-            It Starts with 100+ labs
-          </p>
-          <p className="flex text-center text-gray-600 text-base sm:text-lg">
-            From heart health to hormone balance our comprehensive test panels
-            detect early signs of over 1,000 conditions
-          </p>
-          <button className="flex justify-center items-center w-52 h-14 rounded-full gap-2 hover:bg-gray-100 transition border border-gray-200">
-            <p>Explore all biomarkers</p>
-            <img
-              src="/explorebiomarkarrow.svg"
-              className="w-4 h-4 mt-1.5"
-              alt="arrow"
-            />
-          </button>
-        </div>
+        <div id = "lab">
+          <div className="relative flex flex-col items-center justify-center max-w-3xl mx-auto mt-20 space-y-6">
+            <p className="font-semibold text-2xl sm:text-3xl lg:text-4xl -mt-15 sm:mt-8 lg:mt-10">
+              It Starts with 100+ labs
+            </p>
+            <p className="flex text-center text-gray-600 text-base sm:text-lg">
+              From heart health to hormone balance our comprehensive test panels
+              detect early signs of over 1,000 conditions
+            </p>
+            <button className="flex justify-center items-center w-52 h-14 rounded-full gap-2 hover:bg-gray-100 transition border border-gray-200">
+              <p>Explore all biomarkers</p>
+              <img
+                src="/explorebiomarkarrow.svg"
+                className="w-4 h-4 mt-1.5"
+                alt="arrow"
+              />
+            </button>
+          </div>
 
-        <FeatVids />
+          <FeatVids />
+        </div>
       </section>
     </>
   );
