@@ -1,1 +1,14 @@
-Commit Ammeding:
+1. Commit Ammeding:
+--- > Before:
+commit 0c0507b9c33cfa5e2c30e0a52c595179604eef2e (HEAD -> Howitsec)
+Author: Daiwik-korat <daiwikk@techlusion.io>
+Date:   Sat Feb 14 13:59:39 2026 +0530
+
+    Feat: Product Slider Added
+
+--- > After:
+commit 10ad38d7b3f612be6f5ae7dd4fd4f6ff87c8c086 (HEAD -> Howitsec)
+Author: Daiwik-korat <daiwikk@techlusion.io>
+Date:   Sat Feb 14 13:59:39 2026 +0530
+
+    Feat: Product Slider Added
