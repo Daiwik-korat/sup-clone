@@ -12,3 +12,11 @@ Author: Daiwik-korat <daiwikk@techlusion.io>
 Date:   Sat Feb 14 13:59:39 2026 +0530
 
     Feat: Product Slider Added
+
+
+2. Rebase
+
+--- > Before:
+
+
+--- > After:

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState} from "react";
 import { useSelector } from "react-redux";
-import { RootState, AppDispatch } from "@/app/__lib/store";
+import { RootState} from "@/app/__lib/store";
 import { CatProducts } from "./category";
 import Category from "./category";
 import { GroupedData, Product } from "../../app/__lib/types";

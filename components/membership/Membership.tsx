@@ -110,9 +110,9 @@ function Membership() {
 
   return (
     <section className="flex items-start justify-center w-full mt-3 sm:mt-6 md:mt-10 px-4 max-[991px]:px-6">
-      <div className="flex flex-col min-[991px]:flex-row items-stretch gap-8 w-full min-[991px]:w-[85vw] max-w-[1200px]">
+      <div className="flex flex-col min-[991px]:flex-row items-stretch gap-8 w-full min-[991px]:w-[85vw] max-w-300">
         <div className="flex flex-1 flex-col gap-3 w-full">
-          <div className="w-full rounded-3xl border border-[#e4e4e7] bg-white overflow-hidden relative flex items-center justify-center min-h-[400px]">
+          <div className="w-full rounded-3xl border border-[#e4e4e7] bg-white overflow-hidden relative flex items-center justify-center min-h-100">
             <ImagePlaceHolder targetNumber={activeImage} />
           </div>
 

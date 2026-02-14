@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { FAQ } from "../types";
+import FAQ_FALLBACKs from "../constants/faqFallback";
 
 const FAQ_QUERY = `
   query GetFAQs($linkName: String) {
@@ -19,8 +20,10 @@ export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
     const name: string = process.env.NEXT_PUBLIC_LINK_NAME;
 
     if (!URL || !name) {
-      throw new Error("Environment variables not defined");
+      console.log(FAQ_FALLBACKs);
+      return FAQ_FALLBACKs;
     }
+
     const res = await fetch(
       "https://api-staging.care360-next.carevalidate.com/graphql/",
       {
@@ -34,15 +37,24 @@ export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
       },
     );
 
+    if (!res.ok) {
+      return FAQ_FALLBACKs;
+    }
+
     const json = await res.json();
 
     const rawfaqs = json.data.organizationPartnerIntegrationPublicInfo.faq;
+
+    if (rawfaqs.length === 0) {
+      return FAQ_FALLBACKs;
+    }
 
     const faqs: FAQ[] = rawfaqs.map((item: FAQ) => ({
       answer: item.answer,
       question: item.question,
     }));
 
+    console.log(faqs);
     return faqs;
   },
 );

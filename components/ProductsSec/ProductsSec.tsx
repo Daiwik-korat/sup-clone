@@ -99,7 +99,7 @@ function ProductsSec() {
 
         <div
           ref={slider}
-          className="w-full flex overflow-hidden gap-4 no-scrollbar pb-4"
+          className="relative w-full flex overflow-hidden gap-4 no-scrollbar pb-4 pt-10"
         >
           {products.map((item, index) => (
             <ProductCard
