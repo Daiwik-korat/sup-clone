@@ -1,22 +1,273 @@
 1. Commit Ammeding:
 --- > Before:
 commit 0c0507b9c33cfa5e2c30e0a52c595179604eef2e (HEAD -> Howitsec)
-Author: Daiwik-korat <daiwikk@techlusion.io>
+Author: Daiwik-korat daiwikk@techlusion.io
 Date:   Sat Feb 14 13:59:39 2026 +0530
 
-    Feat: Product Slider Added
+    Feat: Product Slider Added
 
 --- > After:
 commit 10ad38d7b3f612be6f5ae7dd4fd4f6ff87c8c086 (HEAD -> Howitsec)
-Author: Daiwik-korat <daiwikk@techlusion.io>
+Author: Daiwik-korat daiwikk@techlusion.io
 Date:   Sat Feb 14 13:59:39 2026 +0530
 
-    Feat: Product Slider Added
+    Feat: Product Slider Added
 
 
 2. Rebase
+Perform a rebase conflict scenario in an existing project and resolve it correctly.
 
---- > Before:
 
 
---- > After:
+commit 07890f8411deeb1ec3367ba0ba15f8d86a9deabb (HEAD -> main)
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Sun Feb 15 12:35:40 2026 +0530
+
+    Testimonial Section added
+
+commit f845fbe4a4773d7fef5806a82e96be056388ffab
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Sat Feb 14 23:47:11 2026 +0530
+
+    Footer And FAQ Added
+
+**Main Branch made commits which are not updated in HomePage.
+HomePage also have some content diff in some files:**
+Types.ts: Review Interface exist with different properties.
+Small css changes in product slider
+Page.tsx: Extra non existing section added.
+
+Conflict:-
+Page.tsx
+<<<<<<< HEAD
+      <ProductsSec />
+      <Membership />
+      <TestimonialSection />
+      <FAQSec />
+      <Footer />
+=======
+      <ProductsSec/>
+      <Membership/>
+      <NewSec/>
+>>>>>>> 10c1048 (Merge/Rebase intentional Conflicts)
+CSS changes (ProductSection):-
+<<<<<<< HEAD
+      className="w-full sm:w-[300px] md:w-[45%] lg:w-[30%] xl:w-[23%] shrink-0 select-none snap-start "
+=======
+      className="w-full sm:w-75 md:w-[45%] lg:w-[30%] xl:w-[23%] shrink-0 select-none snap-start"
+>>>>>>> 10c1048 (Merge/Rebase intentional Conflicts)
+
+Type.ts
+export interface Review {
+  content: string;
+<<<<<<< HEAD
+  createdAt: Date;
+=======
+  createdAt: string;
+>>>>>>> 10c1048 (Merge/Rebase intentional Conflicts)
+  isVerified: string;
+  customerName: string;
+  title: string;
+  rating: number;
+}
+**Accepted changes of Main branch and made a new Commit
+Logs -**
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git log
+commit 07890f8411deeb1ec3367ba0ba15f8d86a9deabb (HEAD -> main)
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Sun Feb 15 12:35:40 2026 +0530
+
+    Testimonial Section added
+
+commit f845fbe4a4773d7fef5806a82e96be056388ffab
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Sat Feb 14 23:47:11 2026 +0530
+
+    Footer And FAQ Added
+
+commit e5150d0a992e4f2c5a98f864f05aeeab71231971
+Merge: 8828d91 10ad38d
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Sat Feb 14 15:33:43 2026 +0530
+
+    Merge branch 'Howitsec'
+
+commit 8828d91368014228564b9b34941f2bcbbf4781a1 (origin/main)
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Sat Feb 14 15:13:18 2026 +0530
+
+    Main
+
+commit 10ad38d7b3f612be6f5ae7dd4fd4f6ff87c8c086 (origin/HomePage, Howitsec)
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Sat Feb 14 13:59:39 2026 +0530
+
+    Feat: Product Slider Added
+
+commit 994cc670f63b8015de6ad675d9ea595ed0a09d12
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Fri Feb 13 16:34:47 2026 +0530
+
+    Feat: Membership section added
+
+commit 4dd5e25cf1e04621baf7e6143ab730d98a2def14
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Thu Feb 12 16:03:48 2026 +0530
+
+    Revert "Feat:How It works Added"
+
+    This reverts commit 60b28cf17fe9856a1cf037eb0cc6152d446c3ef9.
+
+commit 60b28cf17fe9856a1cf037eb0cc6152d446c3ef9
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Thu Feb 12 14:59:52 2026 +0530
+
+    Feat:How It works Added
+
+commit c15dd7d1cd6e41a6ad37c88c0d8b37b5acc70e05
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Wed Feb 11 18:04:54 2026 +0530
+
+    It started section Completed
+
+commit f388d62d6c5c8bfb03716ff76bde5d6440b46790
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Wed Feb 11 11:16:53 2026 +0530
+
+    Feat: Header, Section Completed
+
+commit e36ecf0c500e523de764138ae32fed49b7952eda
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Tue Feb 10 13:43:15 2026 +0530
+
+    Feat: Redux properly configured for successful data fetch
+
+commit a41887008bae1e74ca1cfb23a12a67a18a40bfd7
+Author: Daiwik-korat daiwikk@techlusion.io
+Date:   Mon Feb 9 11:38:22 2026 +0530
+
+    Initial Commit
+
+commit a1b96f911cc5d0a3a10c48a097866f57b2d42344
+Author: Daiwik k daiwikk@techlusion.io
+Date:   Mon Feb 9 11:33:31 2026 +0530
+
+    Initial commit from Create Next App
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git switch Homepage
+Switched to branch 'Homepage'
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git rebase main
+Auto-merging app/__lib/types.ts
+Auto-merging app/page.tsx
+CONFLICT (content): Merge conflict in app/page.tsx
+Auto-merging components/ProductsSec/productCard.tsx
+CONFLICT (content): Merge conflict in components/ProductsSec/productCard.tsx
+error: could not apply 10c1048... Merge/Rebase intentional Conflicts
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Could not apply 10c1048... Merge/Rebase intentional Conflicts
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git add .
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git commit -m "Rebase Successfull: Footer, Products, Testimonial section Added"
+[detached HEAD 8b0bc4f] Rebase Successfull: Footer, Products, Testimonial section Added
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test>
+
+
+3. Cherry Pick:
+Cherry picking Feat: Add ActionPlan section and fix Guide slider commit to main from HowPage
+
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git cherry-pick 9987b155347e95f5f2f21ebb1d627ffdf2f1f5e8
+Auto-merging app/how-it-works/page.tsx
+CONFLICT (content): Merge conflict in app/how-it-works/page.tsx
+error: could not apply 9987b15... Feat: Add ActionPlan section and fix Guide slider
+hint: After resolving the conflicts, mark them with
+hint: "git add/rm <pathspec>", then run
+hint: "git cherry-pick --continue".
+hint: You can instead skip this commit with "git cherry-pick --skip".
+hint: To abort and get back to the state before "git cherry-pick",
+hint: run "git cherry-pick --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git add .
+warning: in the working copy of 'witch main', LF will be replaced by CRLF the next time Git touches it
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git cherry-pick --continue
+[main 4ac6188] Feat: HowPage Completely merge with resolved Con
+ Date: Mon Feb 16 00:10:43 2026 +0530
+ 6 files changed, 411 insertions(+), 127 deletions(-)
+ create mode 100644 components/actionPlan/actionPlan.tsx
+ create mode 100644 witch main
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> 
+
+Feat: HowPage Completely merge with resolved Conflict
+
+# Conflicts:
+#       app/how-it-works/page.tsx
+#
+# It looks like you may be committing a cherry-pick.
+# If this is not correct, please run
+#       git update-ref -d CHERRY_PICK_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+.git/COMMIT_EDITMSG[+] [unix] (01:23 16/02/2026)                                                                                      1,48 Top
+:wq   
+
+
+4. Interactive Rebase (Squashing):
+Squashing 2 commits where action plan and Slider of Guidance section is fixed:
+
+----> Before
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git log
+commit 3993564d3ad11574f7f38d3dde79138f9ca89ecc (HEAD, HowPage)
+Author: Daiwik-korat <daiwikk@techlusion.io>
+Date:   Mon Feb 16 01:06:09 2026 +0530
+
+    Feat:ActionPlan Section Added
+
+commit bbad9a2f868f59a1215e64e481692ba39a90550d
+Author: Daiwik-korat <daiwikk@techlusion.io>
+Date:   Mon Feb 16 00:10:43 2026 +0530
+
+    Fix: Guide Section Slider Fix"
+
+pick bbad9a2 Fix: Guide Section Slider Fix"
+squash 3993564 Feat:ActionPlan Section Added
+
+# Rebase 30c528c..3993564 onto 30c528c (2 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+.git/rebase-merge/git-rebase-todo[+] [unix] (01:14 16/02/2026)                                                                        2,44 Top
+:wq      
+
+
+Feat: Add ActionPlan section and fix Guide slider
+
+# This is a combination of 2 commits.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Mon Feb 16 00:10:43 2026 +0530
+#
+.git/COMMIT_EDITMSG [unix] (01:15 16/02/2026)                                                                                          2,1 Top
+"/d/Daiwik Study materials/Sem 8/Techlusion/Final Test/.git/C
+
+---> After:
+PS D:\Daiwik Study materials\Sem 8\Techlusion\Final Test> git log
+commit 9987b155347e95f5f2f21ebb1d627ffdf2f1f5e8 (HEAD -> Howpage)
+Author: Daiwik-korat <daiwikk@techlusion.io>
+Date:   Mon Feb 16 00:10:43 2026 +0530
+
+    Feat: Add ActionPlan section and fix Guide slider
