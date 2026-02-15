@@ -18,3 +18,9 @@ export interface GroupedData {
    categoryName: string,
    products:Product[],
 }
+
+export interface Review {
+  name: string,
+  question:string,
+  date:Date
+}

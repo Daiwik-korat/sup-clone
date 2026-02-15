@@ -15,6 +15,7 @@ export default function Home() {
       <HowitWorks />
       <ProductsSec/>
       <Membership/>
+      <NewSec/>
     </>
   );
 }
