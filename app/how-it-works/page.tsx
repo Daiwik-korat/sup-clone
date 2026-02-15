@@ -6,15 +6,15 @@ import Process from "../../components/GetClarity/Process";
 import GuideSec from "../../components/guideSec/guideSec";
 import FAQSec from "../../components/faqSec/faqSec";
 import Footer from "../../components/footer/footer";
-import Statastics from "../../components/statasticsSec/statastics"
+import Statastics from "../../components/statasticsSec/statastics";
 export default function Page() {
   return (
     <>
       <Navbar />
       <HowHero />
       <Process />
-      <GuideSec />
-      <Statastics/>
+      {/* <GuideSec /> */}
+      <Statastics />
       <FAQSec />
       <Footer />
     </>
