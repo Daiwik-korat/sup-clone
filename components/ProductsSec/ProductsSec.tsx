@@ -2,7 +2,7 @@
 import ProductCard from "./productCard";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/__lib/store";
-import { ProductBundle, Product } from "@/app/__lib/types";
+import { Product } from "@/app/__lib/types";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
