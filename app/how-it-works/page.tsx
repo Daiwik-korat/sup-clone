@@ -6,7 +6,9 @@ import Process from "../../components/GetClarity/Process";
 import GuideSec from "../../components/guideSec/guideSec";
 import FAQSec from "../../components/faqSec/faqSec";
 import Footer from "../../components/footer/footer";
-import Statastics from "../../components/statasticsSec/statastics"
+import Statastics from "../../components/statasticsSec/statastics";
+import ActionPlan from "../../components/actionPlan/actionPlan";
+
 export default function Page() {
   return (
     <>
@@ -14,7 +16,8 @@ export default function Page() {
       <HowHero />
       <Process />
       <GuideSec />
-      <Statastics/>
+      <Statastics />
+      <ActionPlan />
       <FAQSec />
       <Footer />
     </>

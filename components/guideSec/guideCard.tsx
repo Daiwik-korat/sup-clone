@@ -11,30 +11,22 @@ function GuideCard({ url, title, desc }: Props) {
   return (
     <div
       className="
-        relative flex flex-shrink-0 select-none
-        /* --- Mobile Styling (<991px) --- */
-        /* Row layout. Width = (100% - 1 gap of 8px) / 2 */
-        flex-row 
-        w-[calc(50%-4px)]
-        h-auto
-        gap-2
-        
-        /* --- Desktop Styling (>=991px) --- */
-        /* Column layout. Width = (100% - 3 gaps of 8px) / 4 */
-        min-[991px]:flex-col 
-        min-[991px]:w-[calc(25%-6px)] 
-        min-[991px]:gap-2
-      "
+      relative flex shrink-0 select-none
+      flex-col max-[991px]:flex-row
+      w-1/2
+      max-[460px]:w-full
+      min-[991px]:w-95
+      min-[1200px]:w-100
+      min-[1500px]:w-105
+      gap-3
+    "
     >
-      {/* Image Container */}
       <div
         className="
-        relative overflow-hidden rounded-2xl flex-shrink-0
-        /* Mobile: Small square */
-        w-[35%] aspect-square
-        /* Desktop: Full width large square */
-        min-[991px]:w-full min-[991px]:aspect-square
-      "
+        relative overflow-hidden rounded-2xl shrink-0
+        w-[40%] aspect-square
+        max-[991px]:max-w-45
+        min-[991px]:w-full"
       >
         <Image
           src={url}
@@ -45,12 +37,21 @@ function GuideCard({ url, title, desc }: Props) {
         />
       </div>
 
-      {/* Text Container */}
-      <div className="flex flex-col justify-center min-[991px]:justify-start w-full">
-        <h3 className="text-[14px] leading-tight font-medium mb-1 min-[991px]:text-[2rem] min-[991px]:mb-2">
+      <div className="flex flex-col justify-center min-[991px]:justify-start min-[991px]:w-full w-[60%] min-w-0">
+        <h3
+          className="
+            w-full leading-tight font-medium mb-1
+            text-[clamp(18px,3vw,30px)]
+            min-[991px]:text-[2rem]"
+        >
           {title}
         </h3>
-        <p className="text-[10px] leading-snug opacity-60 min-[991px]:text-[1rem] line-clamp-3">
+        <p
+          className="
+          w-full leading-snug opacity-60 line-clamp-3
+          text-[clamp(13px,2vw,17px)]
+          min-[991px]:text-[1rem]"
+        >
           {desc}
         </p>
       </div>
