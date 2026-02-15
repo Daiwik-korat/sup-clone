@@ -148,7 +148,7 @@ const FirstBlock = () => {
 
 export default function Statastics() {
   return (
-    <section className="w-screen bg-[#f4f4f5] flex items-center justify-center py-12 min-[991px]:py-20">
+    <section className="w-screen bg-[#f4f4f5] flex items-center justify-center py-12 min-[991px]:py-20 mt-14">
       <div className="w-full max-w-7xl flex flex-col mx-auto px-6">
         <div className="flex flex-col mb-10 max-[991px]:text-[3rem] text-[3.5rem] font-medium leading-tight">
           <p className="text-[#a1a1aa]">Members See results</p>

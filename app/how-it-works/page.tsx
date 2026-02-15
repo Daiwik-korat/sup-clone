@@ -7,14 +7,17 @@ import GuideSec from "../../components/guideSec/guideSec";
 import FAQSec from "../../components/faqSec/faqSec";
 import Footer from "../../components/footer/footer";
 import Statastics from "../../components/statasticsSec/statastics";
+import ActionPlan from "../../components/actionPlan/actionPlan";
+
 export default function Page() {
   return (
     <>
       <Navbar />
       <HowHero />
       <Process />
-      {/* <GuideSec /> */}
+      <GuideSec />
       <Statastics />
+      <ActionPlan />
       <FAQSec />
       <Footer />
     </>
