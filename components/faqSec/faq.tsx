@@ -38,11 +38,11 @@ function FAQ({ question, answer, id, ToggleFun, openId }: FAQProp) {
   }, [isOpen]);
 
   return (
-    <div className="mt-2 w-full text-[1.25rem] flex flex-col gap-4 border-b border-black/10 pb-4">
-      <div
-        onClick={() => ToggleFun(id)}
-        className="cursor-pointer flex justify-between items-center group"
-      >
+    <div
+      onClick={() => ToggleFun(id)}
+      className="mt-2 w-full text-[1.25rem] flex flex-col gap-4 border-b border-black/10 pb-4 cursor-pointer"
+    >
+      <div className="flex justify-between items-center group">
         <p className="font-medium">{question}</p>
         <div
           ref={signRef}

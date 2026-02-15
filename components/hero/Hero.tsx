@@ -1,6 +1,6 @@
 "use client";
-import Join from "./JoinButton.tsx";
-import Image from "next/image"
+import Join from "../JoinButton.tsx";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
