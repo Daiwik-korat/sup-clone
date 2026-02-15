@@ -31,7 +31,7 @@ export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: FAQ_QUERY,
-          variables: { linkName: "senavida" },
+          variables: { linkName: name as string },
         }),
         cache: "no-store",
       },
@@ -54,7 +54,6 @@ export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
       question: item.question,
     }));
 
-    console.log(faqs);
     return faqs;
   },
 );

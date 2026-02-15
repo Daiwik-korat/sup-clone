@@ -9,12 +9,21 @@ export interface ProductBundle {
   products: Product[];
 }
 
-export interface FAQ  {
+export interface FAQ {
   answer: string;
   question: string;
-};
+}
 
 export interface GroupedData {
-   categoryName: string,
-   products:Product[],
+  categoryName: string;
+  products: Product[];
+}
+
+export interface Review {
+  content: string;
+  createdAt: Date;
+  isVerified: string;
+  customerName: string;
+  title: string;
+  rating: number;
 }

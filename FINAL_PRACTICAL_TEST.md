@@ -6,12 +6,12 @@
 
 ## Overview
 
-| Item | Details |
-|------|---------|
-| **Duration** | 3-4 Days (Maximum 32 working hours) |
-| **Difficulty** | Intermediate |
-| **Final Deliverable** | AWS Amplify Deployed Application |
-| **Tech Stack** | Next.js 14+ (App Router), TypeScript, Tailwind CSS, Redux Toolkit/Zustand, Framer Motion/GSAP, GraphQL |
+| Item                  | Details                                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Duration**          | 3-4 Days (Maximum 32 working hours)                                                                    |
+| **Difficulty**        | Intermediate                                                                                           |
+| **Final Deliverable** | AWS Amplify Deployed Application                                                                       |
+| **Tech Stack**        | Next.js 14+ (App Router), TypeScript, Tailwind CSS, Redux Toolkit/Zustand, Framer Motion/GSAP, GraphQL |
 
 ---
 
@@ -24,14 +24,17 @@ Build a pixel-accurate clone of the Superpower website (2 pages) with dynamic da
 ## Reference Materials
 
 ### Live Reference Sites
+
 - **Homepage**: https://superpower.com/
 - **How It Works**: https://superpower.com/how-it-works
 
 ### Provided Screenshots
+
 - `superpower-home.png` - Homepage reference
 - `superpower-how-it-works.png` - How It Works page reference
 
 ### API Endpoint
+
 - **GraphQL Endpoint**: `https://api-staging.care360-next.carevalidate.com/graphql/`
 - **Link Name**: `senavida`
 
@@ -40,6 +43,7 @@ Build a pixel-accurate clone of the Superpower website (2 pages) with dynamic da
 ## Pages to Build
 
 ### Page 1: Homepage (`/`)
+
 Recreate the Superpower homepage with the following sections:
 
 1. **Header/Navigation** (Custom - see requirements below)
@@ -53,6 +57,7 @@ Recreate the Superpower homepage with the following sections:
 9. **Footer** - Links, logo, copyright
 
 ### Page 2: How It Works (`/how-it-works`)
+
 Recreate the How It Works page with the following sections:
 
 1. **Header/Navigation** (Same as homepage)
@@ -80,12 +85,14 @@ The header must be **custom built** with the following structure:
 **Layout:** Logo (left) | Dynamic Categories (center) | Log In + CTA (right)
 
 **Requirements:**
+
 - **Logo**: Left-aligned, links to homepage
 - **Dynamic Categories**: Center-aligned, fetched from API (extract unique categories from product bundles)
 - **Log In**: Static button (no functionality required)
 - **Get Started (CTA)**: Static button styled as primary CTA
 
 **Category Dropdown Behavior:**
+
 - Each category displays a dropdown on hover
 - Dropdown contains:
   - Category image (use product image from that category)
@@ -98,6 +105,7 @@ The header must be **custom built** with the following structure:
 **Replace** the "Developed by world-class medical professionals" section with a **Dynamic Products Slider**.
 
 **Requirements:**
+
 - Fetch products from the API
 - Display as a horizontal slider (same style as testimonials slider)
 - Each product card shows:
@@ -111,6 +119,7 @@ The header must be **custom built** with the following structure:
 ### 3. Dynamic Testimonials Slider
 
 **Requirements:**
+
 - Fetch testimonials from the API
 - Display:
   - Customer name
@@ -123,6 +132,7 @@ The header must be **custom built** with the following structure:
 ### 4. FAQ Section (Config-Based)
 
 **Requirements:**
+
 - Fetch FAQ data from the API
 - **Also** create a local constants file as fallback for easy future modifications
 - Use API data if available, fallback to constants
@@ -135,63 +145,64 @@ The header must be **custom built** with the following structure:
 
 ### Next.js & React
 
-| Requirement | Details |
-|-------------|---------|
-| Next.js Version | 14+ with App Router |
-| Components | Functional components only |
-| Server Components | Use where appropriate (data fetching) |
-| Client Components | Use `"use client"` only when necessary |
-| Layouts | Shared layout with header/footer |
-| Loading States | Route-level `loading.tsx` files |
-| Error Handling | Route-level `error.tsx` files |
-| SEO | Metadata for both pages (title, description, Open Graph) |
-| Images | Use `next/image` for all images with proper optimization |
-| Environment Variables | Use `.env.local` for API endpoint and link name |
+| Requirement           | Details                                                  |
+| --------------------- | -------------------------------------------------------- |
+| Next.js Version       | 14+ with App Router                                      |
+| Components            | Functional components only                               |
+| Server Components     | Use where appropriate (data fetching)                    |
+| Client Components     | Use `"use client"` only when necessary                   |
+| Layouts               | Shared layout with header/footer                         |
+| Loading States        | Route-level `loading.tsx` files                          |
+| Error Handling        | Route-level `error.tsx` files                            |
+| SEO                   | Metadata for both pages (title, description, Open Graph) |
+| Images                | Use `next/image` for all images with proper optimization |
+| Environment Variables | Use `.env.local` for API endpoint and link name          |
 
 ### TypeScript (STRICT REQUIREMENTS)
 
-| Requirement | Details |
-|-------------|---------|
-| Strict Mode | Must be enabled in `tsconfig.json` |
-| No `any` Type | **ZERO tolerance** - instant point deduction |
-| Typed API Responses | Create interfaces for all GraphQL responses |
-| Typed Props | All component props must be typed |
-| Typed State | All useState must have explicit types |
-| Error Handling | Use `unknown` type in catch blocks with proper type narrowing |
+| Requirement         | Details                                                       |
+| ------------------- | ------------------------------------------------------------- |
+| Strict Mode         | Must be enabled in `tsconfig.json`                            |
+| No `any` Type       | **ZERO tolerance** - instant point deduction                  |
+| Typed API Responses | Create interfaces for all GraphQL responses                   |
+| Typed Props         | All component props must be typed                             |
+| Typed State         | All useState must have explicit types                         |
+| Error Handling      | Use `unknown` type in catch blocks with proper type narrowing |
 
 ### Tailwind CSS
 
-| Requirement | Details |
-|-------------|---------|
-| Styling | Tailwind CSS only (no plain CSS files except for animations if needed) |
-| Theme Config | Extend theme in `tailwind.config.ts` with custom values |
-| CSS Variables | Define color palette, spacing, fonts as CSS variables for centralized theming |
-| Responsive | Mobile-first approach with proper breakpoints |
-| No Inline Styles | Use Tailwind classes only |
+| Requirement      | Details                                                                       |
+| ---------------- | ----------------------------------------------------------------------------- |
+| Styling          | Tailwind CSS only (no plain CSS files except for animations if needed)        |
+| Theme Config     | Extend theme in `tailwind.config.ts` with custom values                       |
+| CSS Variables    | Define color palette, spacing, fonts as CSS variables for centralized theming |
+| Responsive       | Mobile-first approach with proper breakpoints                                 |
+| No Inline Styles | Use Tailwind classes only                                                     |
 
 ### State Management
 
-| Requirement | Details |
-|-------------|---------|
-| Library | Redux Toolkit OR Zustand (your choice) |
-| Usage | Manage dynamic data (categories, products, testimonials, FAQ) |
-| Structure | Proper organization with separate slices/stores |
-| Async | Handle API calls with appropriate async patterns |
+| Requirement | Details                                                       |
+| ----------- | ------------------------------------------------------------- |
+| Library     | Redux Toolkit OR Zustand (your choice)                        |
+| Usage       | Manage dynamic data (categories, products, testimonials, FAQ) |
+| Structure   | Proper organization with separate slices/stores               |
+| Async       | Handle API calls with appropriate async patterns              |
 
 ### Animations (CRITICAL)
 
-| Requirement | Details |
-|-------------|---------|
-| Library | Framer Motion OR GSAP |
-| Header Dropdown | Smooth open/close with fade and slide |
-| Hero Section | Entrance animations on page load |
+| Requirement       | Details                                        |
+| ----------------- | ---------------------------------------------- |
+| Library           | Framer Motion OR GSAP                          |
+| Header Dropdown   | Smooth open/close with fade and slide          |
+| Hero Section      | Entrance animations on page load               |
 | Scroll Animations | Elements animate in on scroll (like reference) |
-| Sliders | Smooth sliding transitions |
-| FAQ Accordion | Smooth expand/collapse |
-| Hover Effects | Buttons, cards, links have hover animations |
-| Page Transitions | Smooth transitions between pages |
+| Sliders           | Smooth sliding transitions                     |
+| FAQ Accordion     | Smooth expand/collapse                         |
+| Hover Effects     | Buttons, cards, links have hover animations    |
+| Page Transitions  | Smooth transitions between pages               |
 
 **Animation Checklist:**
+
 - [ ] Header dropdown animation
 - [ ] Hero text/image entrance animation
 - [ ] "How it works" steps reveal on scroll
@@ -205,14 +216,14 @@ The header must be **custom built** with the following structure:
 
 ### Semantic HTML & Accessibility
 
-| Requirement | Details |
-|-------------|---------|
-| Semantic Elements | Use `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>` |
-| Navigation Links | Use proper anchor tags (via Next.js Link), NOT paragraph or div elements |
-| Images | ALL images must have descriptive `alt` attributes |
-| ARIA Labels | Add to interactive elements (buttons, dropdowns, sliders) |
-| Keyboard Navigation | Dropdowns and accordions accessible via keyboard |
-| Focus States | Visible focus indicators on interactive elements |
+| Requirement         | Details                                                                  |
+| ------------------- | ------------------------------------------------------------------------ |
+| Semantic Elements   | Use `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`  |
+| Navigation Links    | Use proper anchor tags (via Next.js Link), NOT paragraph or div elements |
+| Images              | ALL images must have descriptive `alt` attributes                        |
+| ARIA Labels         | Add to interactive elements (buttons, dropdowns, sliders)                |
+| Keyboard Navigation | Dropdowns and accordions accessible via keyboard                         |
+| Focus States        | Visible focus indicators on interactive elements                         |
 
 ### API Integration
 
@@ -229,6 +240,7 @@ The header must be **custom built** with the following structure:
    - Creation date and verification status
 
 **API Integration Requirements:**
+
 - Fetch data from the provided GraphQL endpoint (method of fetching is your choice - native fetch, axios, GraphQL client, etc.)
 - Handle loading states during API calls
 - Handle error states with user-friendly messages
@@ -239,6 +251,7 @@ The header must be **custom built** with the following structure:
 ## Project Structure
 
 Organize your project with a clean, scalable folder structure including:
+
 - App router pages and layouts
 - Reusable components (organized by feature/page)
 - Shared/common components
@@ -253,15 +266,16 @@ Organize your project with a clean, scalable folder structure including:
 ## Git Workflow Requirements
 
 ### Branch Strategy
+
 - Work on a feature branch (not directly on main)
 - Use appropriate branch naming convention
 
 ### Commit Requirements
 
-| Requirement | Details |
-|-------------|---------|
-| Minimum Commits | **20 commits** (meaningful, atomic changes) |
-| Commit Format | Follow Conventional Commits specification |
+| Requirement      | Details                                         |
+| ---------------- | ----------------------------------------------- |
+| Minimum Commits  | **20 commits** (meaningful, atomic changes)     |
+| Commit Format    | Follow Conventional Commits specification       |
 | No Large Commits | Each commit should represent ONE logical change |
 
 ### Advanced Git Requirements
@@ -269,20 +283,24 @@ Organize your project with a clean, scalable folder structure including:
 You must demonstrate the following Git skills and document them in your README:
 
 #### 1. Commit Amending
+
 - Make a commit, then amend it to fix a typo or add a missed file
 - Document with before/after commit hashes
 
 #### 2. Cherry-picking
+
 - Create a commit on a separate branch
 - Cherry-pick it to your main feature branch
 - Document with commit hashes
 
 #### 3. Interactive Rebase (Squashing)
+
 - Make 2-3 small related commits
 - Squash them into one meaningful commit
 - Document with before/after history
 
 #### 4. Merge/Rebase Conflict Resolution
+
 - Create a conflict scenario (can be intentional)
 - Resolve it properly
 - Document the conflict and resolution
@@ -293,13 +311,13 @@ You must demonstrate the following Git skills and document them in your README:
 
 ### Deployment Requirements
 
-| Requirement | Details |
-|-------------|---------|
-| Platform | AWS Amplify |
-| Source | GitHub repository connection |
-| Build | Successful build with no errors |
-| Environment Variables | Properly configured in Amplify |
-| URL | Working public Amplify URL |
+| Requirement           | Details                         |
+| --------------------- | ------------------------------- |
+| Platform              | AWS Amplify                     |
+| Source                | GitHub repository connection    |
+| Build                 | Successful build with no errors |
+| Environment Variables | Properly configured in Amplify  |
+| URL                   | Working public Amplify URL      |
 
 ### Deployment Steps to Document
 
@@ -335,12 +353,12 @@ Your README must include:
 
 ### 1. Design Accuracy (15 points)
 
-| Criteria | Points |
-|----------|--------|
-| Layout Match | 5 |
-| Spacing & Typography | 4 |
-| Color Accuracy | 3 |
-| Responsive Design | 3 |
+| Criteria             | Points |
+| -------------------- | ------ |
+| Layout Match         | 5      |
+| Spacing & Typography | 4      |
+| Color Accuracy       | 3      |
+| Responsive Design    | 3      |
 
 **Deductions:** -1 per noticeable deviation, -2 for broken responsive
 
@@ -348,15 +366,16 @@ Your README must include:
 
 ### 2. Technical Implementation (25 points)
 
-| Criteria | Points |
-|----------|--------|
-| Next.js App Router | 5 |
-| TypeScript | 5 |
-| State Management | 5 |
-| API Integration | 5 |
-| Component Architecture | 5 |
+| Criteria               | Points |
+| ---------------------- | ------ |
+| Next.js App Router     | 5      |
+| TypeScript             | 5      |
+| State Management       | 5      |
+| API Integration        | 5      |
+| Component Architecture | 5      |
 
 **Critical Deductions:**
+
 - **-5 for ANY usage of `any` type**
 - -3 for missing loading/error states
 - -2 per missing TypeScript interface
@@ -365,14 +384,14 @@ Your README must include:
 
 ### 3. Animations (20 points)
 
-| Criteria | Points |
-|----------|--------|
-| Header Dropdown | 4 |
-| Hero Animations | 3 |
-| Scroll Animations | 4 |
-| Slider Animations | 4 |
-| FAQ Accordion | 3 |
-| Micro-interactions | 2 |
+| Criteria           | Points |
+| ------------------ | ------ |
+| Header Dropdown    | 4      |
+| Hero Animations    | 3      |
+| Scroll Animations  | 4      |
+| Slider Animations  | 4      |
+| FAQ Accordion      | 3      |
+| Micro-interactions | 2      |
 
 **Deductions:** -2 per janky animation, -3 for missing critical animation
 
@@ -380,14 +399,15 @@ Your README must include:
 
 ### 4. Semantic HTML & Accessibility (10 points)
 
-| Criteria | Points |
-|----------|--------|
-| Semantic Elements | 3 |
-| Alt Attributes | 3 |
-| ARIA Labels | 2 |
-| Keyboard Navigation | 2 |
+| Criteria            | Points |
+| ------------------- | ------ |
+| Semantic Elements   | 3      |
+| Alt Attributes      | 3      |
+| ARIA Labels         | 2      |
+| Keyboard Navigation | 2      |
 
 **Critical Deductions:**
+
 - **-3 for using paragraph/div for navigation links**
 - **-1 per image missing alt attribute**
 - -2 for missing main element
@@ -396,15 +416,16 @@ Your README must include:
 
 ### 5. Code Quality (10 points)
 
-| Criteria | Points |
-|----------|--------|
-| Clean Code | 3 |
-| No Commented Code | 2 |
-| Consistent Naming | 2 |
-| DRY Principle | 2 |
-| Proper Error Handling | 1 |
+| Criteria              | Points |
+| --------------------- | ------ |
+| Clean Code            | 3      |
+| No Commented Code     | 2      |
+| Consistent Naming     | 2      |
+| DRY Principle         | 2      |
+| Proper Error Handling | 1      |
 
 **Deductions:**
+
 - **-2 for ANY commented-out code**
 - -1 per inconsistent naming
 
@@ -412,14 +433,14 @@ Your README must include:
 
 ### 6. Git Workflow (10 points)
 
-| Criteria | Points |
-|----------|--------|
-| Commit Quantity (20+) | 2 |
-| Commit Quality | 2 |
-| Commit Amending | 1.5 |
-| Cherry-picking | 1.5 |
-| Interactive Rebase | 1.5 |
-| Conflict Resolution | 1.5 |
+| Criteria              | Points |
+| --------------------- | ------ |
+| Commit Quantity (20+) | 2      |
+| Commit Quality        | 2      |
+| Commit Amending       | 1.5    |
+| Cherry-picking        | 1.5    |
+| Interactive Rebase    | 1.5    |
+| Conflict Resolution   | 1.5    |
 
 **Deductions:** -0.5 per vague message, -2 for <15 commits, -5 for <10 commits
 
@@ -427,12 +448,12 @@ Your README must include:
 
 ### 7. Documentation (5 points)
 
-| Criteria | Points |
-|----------|--------|
-| README Completeness | 2 |
-| Setup Instructions | 1 |
-| Git Proof | 1 |
-| Code Comments (where needed) | 1 |
+| Criteria                     | Points |
+| ---------------------------- | ------ |
+| README Completeness          | 2      |
+| Setup Instructions           | 1      |
+| Git Proof                    | 1      |
+| Code Comments (where needed) | 1      |
 
 **Deductions:** -2 for generic README, -1 for missing Git proof
 
@@ -440,11 +461,11 @@ Your README must include:
 
 ### 8. Deployment (5 points)
 
-| Criteria | Points |
-|----------|--------|
-| Successful Deployment | 2 |
-| Environment Variables | 1 |
-| All Features Working | 2 |
+| Criteria              | Points |
+| --------------------- | ------ |
+| Successful Deployment | 2      |
+| Environment Variables | 1      |
+| All Features Working  | 2      |
 
 **Deductions:** -5 for failed deployment, -2 per broken feature
 
@@ -452,26 +473,26 @@ Your README must include:
 
 ### Bonus Points (Up to +5)
 
-| Bonus | Points |
-|-------|--------|
-| Exceptional Animations | +2 |
-| Perfect Pixel Match | +1 |
-| Extra Accessibility | +1 |
-| Performance (Lighthouse 90+) | +1 |
+| Bonus                        | Points |
+| ---------------------------- | ------ |
+| Exceptional Animations       | +2     |
+| Perfect Pixel Match          | +1     |
+| Extra Accessibility          | +1     |
+| Performance (Lighthouse 90+) | +1     |
 
 ---
 
 ### Grading Scale
 
-| Grade | Points |
-|-------|--------|
-| A+ | 95-100+ |
-| A | 90-94 |
-| B+ | 85-89 |
-| B | 80-84 |
-| C+ | 75-79 |
-| C | 70-74 |
-| F | <70 |
+| Grade | Points  |
+| ----- | ------- |
+| A+    | 95-100+ |
+| A     | 90-94   |
+| B+    | 85-89   |
+| B     | 80-84   |
+| C+    | 75-79   |
+| C     | 70-74   |
+| F     | <70     |
 
 ---
 
@@ -500,11 +521,11 @@ Your README must include:
 
 ## Timeline Suggestion
 
-| Day | Focus |
-|-----|-------|
-| **Day 1** | Project setup, API integration, Header with dropdowns, Footer |
-| **Day 2** | Homepage sections (Hero, How it works, Products slider, Membership, Testimonials) |
-| **Day 3** | FAQ component, How It Works page (all sections), Statistics counter |
+| Day       | Focus                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------- |
+| **Day 1** | Project setup, API integration, Header with dropdowns, Footer                             |
+| **Day 2** | Homepage sections (Hero, How it works, Products slider, Membership, Testimonials)         |
+| **Day 3** | FAQ component, How It Works page (all sections), Statistics counter                       |
 | **Day 4** | Responsive polish, animation refinements, accessibility fixes, Amplify deployment, README |
 
 ---
@@ -512,6 +533,7 @@ Your README must include:
 ## Important Reminders
 
 ### DO:
+
 - Commit frequently with meaningful messages
 - Test responsive design at multiple breakpoints
 - Use TypeScript strictly - define types for everything
@@ -520,6 +542,7 @@ Your README must include:
 - Test on deployed Amplify URL before submission
 
 ### DON'T:
+
 - Use `any` type (automatic -5 points)
 - Leave commented code (automatic -2 points)
 - Use paragraph or div elements for navigation links
@@ -532,6 +555,7 @@ Your README must include:
 ## Final Notes
 
 This test evaluates everything you've learned over the past 5 weeks:
+
 - **Week 1**: Git, HTML semantics, CSS, responsive design
 - **Week 2**: JavaScript, TypeScript, React fundamentals
 - **Week 3**: Next.js, advanced Git, production patterns
@@ -539,6 +563,7 @@ This test evaluates everything you've learned over the past 5 weeks:
 - **Week 5**: AWS Amplify deployment
 
 Your feedback from previous tests has been considered. Pay special attention to:
+
 - **TypeScript strictness** - No `any` type
 - **Semantic HTML** - Proper elements for navigation
 - **Accessibility** - Alt attributes on ALL images

@@ -6,6 +6,7 @@ import ProductsSec from "../components/ProductsSec/ProductsSec";
 import Membership from "../components/membership/Membership";
 import FAQSec from "../components/faqSec/faqSec";
 import Footer from "../components/footer/footer";
+import TestimonialSection from "../components/testimonial/TestimonialSection";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <HowitWorks />
       <ProductsSec />
       <Membership />
+      <TestimonialSection />
       <FAQSec />
       <Footer />
     </>

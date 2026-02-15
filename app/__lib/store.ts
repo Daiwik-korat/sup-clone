@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productsReducer from "./features/productSlice";
-import faqReducer from "./features/faqSlice"
+import faqReducer from "./features/faqSlice";
+import reviewReducer from "./features/testiSlice";
 
 export const store = configureStore({
   reducer: {
     products: productsReducer,
-    faqs: faqReducer
+    faqs: faqReducer,
+    review: reviewReducer,
   },
 });
 
