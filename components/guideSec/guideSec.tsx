@@ -3,9 +3,9 @@ import GuideCard from "./guideCard";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import gsap from "gsap";
-import { Draggable } from "gsap/dist/Draggable";
 
-gsap.registerPlugin(useGSAP, Draggable);
+// Removed Draggable registration
+gsap.registerPlugin(useGSAP);
 
 interface DataItem {
   imgUrl: string;
@@ -56,35 +56,8 @@ function GuideSec() {
     return -(firstCardWidth + gap);
   };
 
-  const { contextSafe } = useGSAP(
-    () => {
-      if (!containerRef.current) return;
-
-      Draggable.create(containerRef.current, {
-        type: "x",
-        edgeResistance: 0.65,
-        inertia: true,
-        bounds: { minX: getTargetX(), maxX: 0 },
-        onDragEnd: function () {
-          const targetX = getTargetX();
-          const halfWay = targetX / 2;
-
-          if (this.x < halfWay) {
-            gsap.to(this.target, {
-              x: targetX,
-              duration: 0.5,
-              ease: "power2.out",
-            });
-            setIsRightEnabled(false);
-          } else {
-            gsap.to(this.target, { x: 0, duration: 0.5, ease: "power2.out" });
-            setIsRightEnabled(true);
-          }
-        },
-      });
-    },
-    { scope: containerRef },
-  );
+  // contextSafe is still needed for the button handlers to work with GSAP memory management
+  const { contextSafe } = useGSAP({ scope: containerRef });
 
   const handleButtonClick = contextSafe((direction: "left" | "right") => {
     const targetX = direction === "right" ? getTargetX() : 0;
@@ -162,7 +135,8 @@ function GuideSec() {
 
         <div
           ref={containerRef}
-          className="flex w-full gap-6 pb-4 touch-none cursor-grab active:cursor-grabbing"
+          // Removed: touch-none, cursor-grab, active:cursor-grabbing
+          className="flex w-full gap-6 pb-4"
         >
           {GUIDE_DATA.map((item, index) => (
             <GuideCard

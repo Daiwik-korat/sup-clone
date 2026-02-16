@@ -19,16 +19,16 @@ export default function Step(props: Props) {
     <div
       id={props.id}
       className="
-    relative
-    lg:absolute
-    w-full
-    flex flex-col lg:flex-row
-    items-start lg:items-center
-    gap-6 lg:gap-10
-  "
+      relative
+      lg:absolute
+      w-full
+      flex flex-col lg:flex-row
+      items-start lg:items-center
+      gap-5 lg:gap-10
+    "
     >
       {/* Image */}
-      <div className="w-full lg:flex-[1.1] lg:max-w-[555px] flex-shrink-0">
+      <div className="w-full lg:flex-[1.1] lg:max-w-138.75 flex-shrink-0">
         <Image
           src={props.url}
           alt="Step image"
@@ -38,12 +38,12 @@ export default function Step(props: Props) {
         />
       </div>
 
-      <div className="bg-orange-600 flex justify-center items-center lg:max-w-[56px] lg:max-h-[27px] px-4 py-2 text-white whitespace-nowrap">
+      <div className="bg-orange-600 flex justify-center items-center max-w-15 max-h-7.5 lg:max-w-14 lg:max-h-6.75 px-4 py-2 text-white whitespace-nowrap">
         {props.day}
       </div>
 
       {/* Right Side */}
-      <div className="flex w-full lg:flex-[0.9] min-w-0 lg:max-w-[500px] items-start gap-4">
+      <div className="flex w-full lg:flex-[0.9] min-w-0 lg:max-w-125 items-start gap-4">
         <div className="flex-1">
           <h3 className="text-4xl font-semibold leading-tight">
             {props.title}
