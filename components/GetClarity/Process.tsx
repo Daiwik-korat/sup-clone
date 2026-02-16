@@ -8,7 +8,7 @@ export default function Process() {
           <p className="text-center font-semibold opacity-60 text-[1.125rem]">
             No more wait times for your health
           </p>
-          <p className="text-center font-semibold text-3xl lg:text-5xl md:text-4xl sm:text-3xl">
+          <p className="text-center font-semibold text-3xl lg:text-6xl md:text-4xl sm:text-3xl">
             Get clarity at every step
           </p>
         </div>
