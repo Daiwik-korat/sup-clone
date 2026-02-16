@@ -19,45 +19,44 @@ export default function Step(props: Props) {
     <div
       id={props.id}
       className="
-        relative 
-        lg:absolute 
-        w-full 
-        max-w-7xl 
-        lg:px-10
-        left-1/2 
-        -translate-x-1/2
-        flex flex-col lg:flex-row lg:flex-row-3 flex-1
-        items-start lg:items-center lg:justify-evenly
-        gap-4 lg:gap-8
-      "
+    relative
+    lg:absolute
+    w-full
+    flex flex-col lg:flex-row
+    items-start lg:items-center
+    gap-6 lg:gap-10
+  "
     >
-      <Image
-        src={props.url}
-        alt="Image URL no response OR URL Wrong"
-        width={555}
-        height={555}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 40vw"
-        className="w-full lg:max-w-138.75 flex-1 rounded-2xl object-contain"
-      />
+      {/* Image */}
+      <div className="w-full lg:flex-[1.1] lg:max-w-[555px] flex-shrink-0">
+        <Image
+          src={props.url}
+          alt="Step image"
+          width={555}
+          height={555}
+          className="w-full rounded-2xl object-contain"
+        />
+      </div>
 
-      <div className="bg-orange-600 flex flex-none justify-center items-center min-w-15 font-[1rem] text-center lg:text-left text-white">
+      <div className="bg-orange-600 flex justify-center items-center lg:max-w-[56px] lg:max-h-[27px] px-4 py-2 text-white whitespace-nowrap">
         {props.day}
       </div>
 
-      <div className="flex-1 lg:max-w-100 lg:min-w-120 w-full">
-        <h3 className="text-4xl lg:max-w-129.5 max-[1024px]:min-w-full sm:text-4xl md:text-4xl lg:text-4xl font-semibold leading-tight">
-          {props.title}
-        </h3>
+      {/* Right Side */}
+      <div className="flex w-full lg:flex-[0.9] min-w-0 lg:max-w-[500px] items-start gap-4">
+        <div className="flex-1">
+          <h3 className="text-4xl font-semibold leading-tight">
+            {props.title}
+          </h3>
 
-        <div className="mt-2 text-lg md:text-xl lg:text-base max-[1024px]:min-w-full wrap-break-word">
-          {props.description}
+          <div className="mt-2 text-[20px]">{props.description}</div>
+
+          <ul className="mt-3 text-base list-disc pl-5">
+            <li>{props.points.point1}</li>
+            <li>{props.points.point2}</li>
+            <li>{props.points.point3}</li>
+          </ul>
         </div>
-
-        <ul className="mt-3 text-lg md:text-xl lg:text-base max-[1024px]:min-w-full list-disc pl-5">
-          <li>{props.points.point1}</li>
-          <li>{props.points.point2}</li>
-          <li>{props.points.point3}</li>
-        </ul>
       </div>
     </div>
   );
