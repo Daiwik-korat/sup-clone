@@ -70,7 +70,6 @@ function GuideSec() {
           const halfWay = targetX / 2;
 
           if (this.x < halfWay) {
-            // Snap to the moved position (Right state)
             gsap.to(this.target, {
               x: targetX,
               duration: 0.5,
@@ -78,7 +77,6 @@ function GuideSec() {
             });
             setIsRightEnabled(false);
           } else {
-            // Snap back to start (Left state)
             gsap.to(this.target, { x: 0, duration: 0.5, ease: "power2.out" });
             setIsRightEnabled(true);
           }

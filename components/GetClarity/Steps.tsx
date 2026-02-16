@@ -61,19 +61,21 @@ export default function Steps() {
     <>
       <div
         id="Images"
-        className="relative lg:pt-[20vh] lg:h-screen px-10 h-auto w-full flex flex-col gap-13 justify-start items-start"
+        className="relative lg:pt-[20vh] lg:h-screen overflow-hidden"
       >
-        {Data.map((item, index) => (
-          <Step
-            id={`img${index}`}
-            key={index}
-            url={item.url}
-            title={item.title}
-            description={item.description}
-            points={item.points}
-            day={item.day}
-          />
-        ))}
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+          {Data.map((item, index) => (
+            <Step
+              id={`img${index}`}
+              key={index}
+              url={item.url}
+              title={item.title}
+              description={item.description}
+              points={item.points}
+              day={item.day}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
