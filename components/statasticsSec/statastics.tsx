@@ -45,8 +45,8 @@ function CounterNumber({ val }: { val: number }) {
 
       gsap.to(counter, {
         value: val,
-        duration: 1,
-        ease: "power2.out",
+        duration: 0.7,
+        ease: "back.out",
         snap: { value: 1 },
         onUpdate: () => {
           if (numberRef.current) {

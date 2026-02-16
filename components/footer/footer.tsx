@@ -44,7 +44,7 @@ function Listing(props: { links: string[]; heading: string }) {
     const handleResize = () => {
       const mobile = window.innerWidth < 991;
       setIsMobile(mobile);
-
+      
       if (!mobile) {
         setIsOpen(true);
         gsap.set(contentRef.current, { clearProps: "all" });
@@ -54,65 +54,34 @@ function Listing(props: { links: string[]; heading: string }) {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    if (!isMobile && contentRef.current) {
-      gsap.set(contentRef.current, { height: "auto", opacity: 1 });
-      return;
-    }
-
-    gsap.to(contentRef.current, {
-      height: isOpen ? "auto" : 0,
-      opacity: isOpen ? 1 : 0,
-      duration: 0.4,
-      ease: "power2.inOut",
-    });
-  }, [isOpen, isMobile]);
-
-  const toggleAccordion = () => {
-    if (isMobile) {
-      setIsOpen(!isOpen);
-    }
-  };
 
   return (
     <div className="flex flex-col border-b border-black/10 min-[991px]:border-none pb-4 min-[991px]:pb-0">
-      <div
-        onClick={toggleAccordion}
-        className={`flex justify-between items-center mb-1 ${
-          isMobile ? "cursor-pointer" : "cursor-default"
-        }`}
+      <div 
+        onClick={() => isMobile && setIsOpen(!isOpen)} 
+        className={`flex justify-between items-center mb-1 ${isMobile ? "cursor-pointer" : "cursor-default"}`}
       >
-        <p className="opacity-60 text-[15px] font-medium text-[#1a1a1a]">
-          {props.heading}
-        </p>
-
-        <div className="block min-[991px]:hidden text-[#1a1a1a] w-5 h-5">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            role="img"
-            className="iconify iconify--ic w-full h-full"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z"
-            ></path>
-          </svg>
-        </div>
+        <p className="opacity-60 text-[15px] font-medium text-[#1a1a1a]">{props.heading}</p>
+        {isMobile && (
+           <div className="text-[#1a1a1a] w-5 h-5">
+           </div>
+        )}
       </div>
 
       <div ref={contentRef} className="overflow-hidden min-[991px]:h-auto">
         <div className="flex flex-col gap-3 pt-2 min-[991px]:pt-0">
           {props.links.map((item, index) => (
-            <List key={index} link={item} />
+            <div key={index}>
+              {isMobile ? (
+                <List link={item.replace(" [We're hiring!]", "")} />
+              ) : (
+                <List link={item} />
+              )}
+            </div>
           ))}
         </div>
       </div>
@@ -132,8 +101,7 @@ function Footer() {
       id="footer"
       className="relative w-full overflow-hidden bg-white pb-20 mt-30 sm:mt-35 md:mt-40 lg:mt-50"
     >
-      <div className="flex flex-col w-full gap-50">
-        {/* Logo + Links */}
+      <div className="flex flex-col w-full gap-50 px-[2px]">
         <div>
           <div className="relative w-full mb-10">
             <video
@@ -195,7 +163,6 @@ function Footer() {
         </div>
         <div>
           <div className="flex flex-col gap-30">
-            {/* AI Icons */}
             <div className="w-full flex sm:flex-row flex-col gap-10 justify-between px-10">
               <div className="flex flex-col w-[342px] gap-2">
                 <svg
@@ -237,7 +204,7 @@ function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-center mt-10 relative size-[80px] sm:size-[100px] lg:size-[120px] xl:size-[140px]">
+              <div className="flex items-center justify-center mt-6 relative size-[80px] sm:size-[100px] lg:size-[120px] xl:size-[140px]">
                 <Image
                   src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/69419d2ea150deec1605ef43_image%20(27).png"
                   fill
@@ -248,7 +215,6 @@ function Footer() {
               </div>
             </div>
 
-            {/* CopyRights */}
             <div className="flex flex-col w-[90vw] mx-auto items-center justify-center opacity-65 gap-4">
               <hr className="w-full sm:block hidden"></hr>
               <div className="flex sm:flex-col flex-col-reverse md:flex-row sm:justify-between w-full text-[14px] gap-y-4">

@@ -5,7 +5,7 @@ function ViewSample({ isBlack }: { isBlack: boolean }) {
   return (
     <a
       href="https://superpower.com/checkout"
-      className={`group flex items-center justify-center gap-2 rounded-full w-[160px] h-[52px] font-medium transition-all 
+      className={`group flex items-center justify-center gap-2 rounded-full w-40 h-13 font-medium transition-all 
         max-[991px]:absolute max-[991px]:left-1/2 max-[991px]:bottom-8 max-[991px]:-translate-x-1/2
         ${isBlack ? "text-white bg-black hover:bg-gray-800" : "text-black bg-white hover:bg-gray-100 shadow-sm"}
       `}
@@ -48,7 +48,7 @@ function ActionPlan() {
         </div>
 
         <div className="grid grid-cols-1 min-[991px]:grid-cols-2 gap-6 w-full">
-          <div className="relative bg-white border border-[#fc5f2b] rounded-[0.85rem] p-8 md:p-10 h-[360px] md:h-[380px] overflow-hidden flex flex-col justify-between">
+          <div className="relative bg-white border border-[#fc5f2b] rounded-[0.85rem] p-8 md:p-10 h-90 md:h-95 overflow-hidden flex flex-col justify-between">
             <div className="relative z-20 flex flex-col items-start w-fit">
               <Image
                 src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68756d60749a9d4add4303c6_superpower-logo.svg"
@@ -71,7 +71,7 @@ function ActionPlan() {
                 src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68bf490357c25d2fac6cc61f_Nature%20Superpower%201.avif"
                 fill
                 alt="Background Design"
-                className="object-contain object-right-top opacity-80"
+                className="object-contain object-top-right opacity-80"
               />
             </div>
             <div className="absolute -right-4 bottom-[-10%] w-[60%] h-[90%] z-10 pointer-events-none">
@@ -79,12 +79,12 @@ function ActionPlan() {
                 src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68ddb5146c331cb64685a697_Frame%2016.avif"
                 fill
                 alt="Document Sample"
-                className="object-contain object-right-bottom"
+                className="object-contain object-bottom-right"
               />
             </div>
           </div>
 
-          <div className="relative bg-[#f2f2f2] rounded-[2rem] p-8 md:p-10 h-[360px] md:h-[380px] overflow-hidden flex flex-col justify-between">
+          <div className="relative bg-[#f2f2f2] rounded-4xl p-8 md:p-10 h-90 md:h-95 overflow-hidden flex flex-col justify-between">
             <div className="relative z-20">
               <h3 className="text-xl font-medium text-black">
                 General check up
@@ -100,7 +100,7 @@ function ActionPlan() {
                 src="https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68bf49e24405bd4261bb8306_Group%201321315803.avif"
                 fill
                 alt="General checkup documents"
-                className="object-contain object-right-bottom"
+                className="object-contain object-bottom-right"
               />
             </div>
           </div>

@@ -5,12 +5,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { useGSAP } from "@gsap/react";
 import FeatVids from "./featVids.tsx";
+import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function FeatureHighlight() {
+  const container = useRef<HTMLDivElement>(null);
+  const labref = useRef<HTMLDivElement>(null);
   useGSAP(() => {
-    gsap.fromTo("#lab", 
+    gsap.fromTo(labref.current, 
       {
         scale:1.4,
         filter:"blur(8px)",
@@ -27,10 +30,10 @@ function FeatureHighlight() {
           },
       },
     );
-  });
+  },{ scope: container });
   return (
     <>
-      <section className="relative z-10 bg-white w-full rounded-[70px] -mt-20 md:-mt-10 lg:mt-0 px-2 pt-30">
+      <section ref={container} className="relative z-10 bg-white w-full rounded-[70px] -mt-20 md:-mt-10 lg:mt-0 px-2 pt-30">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -48,7 +51,7 @@ function FeatureHighlight() {
           />
         </svg>
 
-        <div className="hidden md:flex flex-row gap-2 lg:gap-8 xl:gap-12 items-start justify-center">
+        <div ref = {labref} className="hidden md:flex flex-row gap-2 lg:gap-8 xl:gap-12 items-start justify-center">
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <svg

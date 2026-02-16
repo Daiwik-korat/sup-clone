@@ -46,7 +46,7 @@ function FAQ({ question, answer, id, ToggleFun, openId }: FAQProp) {
         <p className="font-medium">{question}</p>
         <div
           ref={signRef}
-          className="flex items-center justify-center relative w-4 h-4 flex-shrink-0"
+          className="flex items-center justify-center relative w-4 h-4 shrink-0"
         >
           <div className="absolute w-full h-0.5 bg-current rounded-full"></div>
           <div

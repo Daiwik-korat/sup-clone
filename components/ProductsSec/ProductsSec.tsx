@@ -7,7 +7,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
 
-gsap.registerPlugin(useGSAP);
 
 function ProductsSec() {
   const slider = useRef<HTMLDivElement>(null);

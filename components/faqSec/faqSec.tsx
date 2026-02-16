@@ -14,7 +14,7 @@ function FAQSec() {
   if (loading === true) {
     return (
       <>
-        <section className="w-screen flex justify-center items-center">
+        <section className="w-screen flex justify-center items-center bg-grap-200">
           <div className="text-8xl w-[80%]">Loading FAQ</div>;
         </section>
         ;

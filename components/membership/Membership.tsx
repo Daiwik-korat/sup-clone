@@ -25,12 +25,12 @@ function NavImage(props: {
   current: number;
   func: (n: number) => void;
 }) {
-  const isSelected = props.index === props.current;
+  const isSelected:boolean = props.index === props.current;
 
-  const baseClass =
+  const baseClass:string =
     "relative flex-1 min-w-[50px] aspect-square min-[991px]:flex-none min-[991px]:w-16 min-[991px]:h-16 rounded-lg overflow-hidden transition-all duration-200 cursor-pointer";
 
-  const activeClass = isSelected
+  const activeClass:string = isSelected
     ? "border-2 border-[#fc5f2b] ring-2 ring-[#fc5f2b]/20 z-10 scale-105"
     : "border border-[#e4e4e7] hover:border-zinc-400 opacity-80 hover:opacity-100";
 
@@ -70,7 +70,7 @@ function ImageShow({ number }: { number: number }) {
 }
 
 function ImagePlaceHolder({ targetNumber }: { targetNumber: number }) {
-  const [visibleNumber, setVisibleNumber] = useState(targetNumber);
+  const [visibleNumber, setVisibleNumber] = useState<number>(targetNumber);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

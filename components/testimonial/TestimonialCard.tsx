@@ -10,6 +10,7 @@ interface Props {
   ChangeFun?: (num: number) => void;
 }
 
+
 function TestimonialCard({
   star,
   title,
@@ -27,7 +28,7 @@ function TestimonialCard({
   }, [ChangeFun]);
 
   const renderStars = () => {
-    const stars = [];
+    const stars:React.ReactNode[] = [];
     const nonFilledStars = 5 - star;
 
     for (let i = 0; i < star; i++) {

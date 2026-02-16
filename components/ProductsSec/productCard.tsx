@@ -22,7 +22,7 @@ function ProductCard(props: Props) {
   return (
     <div
       ref={elementRef}
-      className="w-full sm:w-[300px] md:w-[45%] lg:w-[30%] xl:w-[23%] shrink-0 select-none snap-start "
+      className="w-full sm:w-75 md:w-[45%] lg:w-[30%] xl:w-[23%] shrink-0 select-none snap-start "
     >
       <div className="bg-gray-100 rounded-lg p-4 h-full flex flex-col justify-between hover:shadow-lg duration-300 transition-all hover:shadow-black-300 hover:scale-105">
         <div className="flex flex-col items-center w-full mb-4">

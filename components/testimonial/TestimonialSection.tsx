@@ -20,7 +20,7 @@ function TestimonialSec() {
     cardWidthRef.current = width;
   };
 
-  const reviews: Review[] = review;
+  const reviews: Review[] = review || [];
 
   const animateSliderRight = () => {
     if (slider.current) {
