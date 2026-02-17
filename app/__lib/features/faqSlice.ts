@@ -16,8 +16,8 @@ const FAQ_QUERY = `
 export const fetchFAQThunk = createAsyncThunk<FAQ[]>(
   "faq/fetchfaq",
   async () => {
-    const URL: string = process.env.NEXT_PUBLIC_GRAPHQL_URL;
-    const name: string = process.env.NEXT_PUBLIC_LINK_NAME;
+    const URL: string = process.env.NEXT_PUBLIC_GRAPHQL_URL || "";
+    const name: string = process.env.NEXT_PUBLIC_LINK_NAME || "";
 
     if (!URL || !name) {
       console.log(FAQ_FALLBACKs);

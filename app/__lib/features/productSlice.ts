@@ -18,8 +18,8 @@ const PRODUCTBUNDLES_QUERY = `
 export const fetchProductsThunk = createAsyncThunk<ProductBundle>(
   "products/fetchProducts",
   async () => {
-    const URL: string = process.env.NEXT_PUBLIC_GRAPHQL_URL;
-    const name: string = process.env.NEXT_PUBLIC_LINK_NAME;
+    const URL: string = process.env.NEXT_PUBLIC_GRAPHQL_URL || "";
+    const name: string = process.env.NEXT_PUBLIC_LINK_NAME || "";
 
     if (!URL || !name) {
       throw new Error("Environment variables not defined");

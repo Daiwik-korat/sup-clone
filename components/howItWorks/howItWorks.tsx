@@ -101,7 +101,7 @@ function VerticalView() {
     <div className="relative grid grid-cols-[32px_1fr] gap-x-6 gap-y-12 items-start w-full">
       <div
         id="connecting-line"
-        className="absolute left-[15px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#fc5f2b] from-90% to-transparent z-0"
+        className="absolute left-3.75 top-0 bottom-0 w-0.5 bg-linear-to-b from-[#fc5f2b] from-90% to-transparent z-0"
       />
 
       {numbers.map((item, index) => (
@@ -132,7 +132,7 @@ function HorizontalView() {
       <div className="col-span-3 relative grid grid-cols-3 gap-x-10 lg:gap-x-20 items-center">
         <div
           id="connecting-line"
-          className="absolute left-1/2 -translate-x-1/2 w-screen top-1/2 -translate-y-1/2 h-[2px] bg-gradient-to-r from-[#fc5f2b] from-90% to-transparent z-0"
+          className="absolute left-1/2 -translate-x-1/2 w-screen top-1/2 -translate-y-1/2 h-0.5 bg-linear-to-r from-[#fc5f2b] from-90% to-transparent z-0"
         />
 
         {numbers.map((item, index) => (
@@ -284,9 +284,9 @@ function HowItWorks() {
   return (
     <section
       id="howsec"
-      className="flex flex-col justify-start items-center gap-50 w-full max-w-380 mx-auto px-6 lg:px-20 xl:px-30 mt-15 sm:mt-20 lg:mt-25 xl:mt-30"
+      className="flex flex-col justify-start items-center gap-50 w-full h-screen max-h-1600 max-w-7xl mx-auto px-6 lg:px-20 xl:px-30 mt-15 sm:mt-20 lg:mt-25 xl:mt-30"
     >
-      <p className="text-3xl sm:text-6xl md:text-2xl lg:text-xl w-[100%] sm:relative ml-5 mt-5 max-[540px]:text-center font-semibold">
+      <p className="text-[1.5rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] w-full sm:relative ml-5 text-center font-semibold">
         How it Works
       </p>
 

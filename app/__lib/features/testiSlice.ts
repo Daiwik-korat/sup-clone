@@ -17,8 +17,8 @@ const TESTIMONIAL_QUERY = `
 export const fetchTestiThunk = createAsyncThunk<Review[]>(
   "testi/fetchreview",
   async () => {
-    const URL: string = process.env.NEXT_PUBLIC_GRAPHQL_URL;
-    const name: string = process.env.NEXT_PUBLIC_LINK_NAME;
+    const URL: string = process.env.NEXT_PUBLIC_GRAPHQL_URL || "";
+    const name: string = process.env.NEXT_PUBLIC_LINK_NAME || "";
 
     if (!URL || !name) {
       return [];
