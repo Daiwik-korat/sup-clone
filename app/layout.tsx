@@ -1,8 +1,6 @@
 // ./app/layout.tsx
 import type { Metadata } from "next";
 import StoreProvider from "./__lib/StoreProvider";
-import StoreInitializer from "./__lib/StoreInitializer";
-import Footer from "../components/footer/footer";
 import Navbar from "../components/header/navbar";
 import "./globals.css";
 
@@ -35,10 +33,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StoreProvider>
-          <StoreInitializer /> 
-          <Navbar />
+          <Navbar/>
           {children}
-          <Footer />
         </StoreProvider>
       </body>
     </html>

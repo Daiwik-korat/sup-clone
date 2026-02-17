@@ -1,5 +1,5 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/app/__lib/hooks";
 import { RootState } from "@/app/__lib/store";
 import { useState } from "react";
 import FAQ from "./faq";
@@ -7,7 +7,7 @@ import FAQ from "./faq";
 function FAQSec() {
   const [openId, setOpenId] = useState<number>(0);
 
-  const { faqs, loading: faqLoading, error: faqError } = useSelector(
+  const { faqs, loading: faqLoading, error: faqError } = useAppSelector(
     (state: RootState) => state.faqs,
   );
 

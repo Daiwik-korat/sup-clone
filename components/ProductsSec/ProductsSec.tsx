@@ -1,6 +1,6 @@
 "use client";
 import ProductCard from "./productCard";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/app/__lib/hooks";
 import { RootState } from "@/app/__lib/store";
 import { Product } from "@/app/__lib/types";
 import { useGSAP } from "@gsap/react";
@@ -17,7 +17,7 @@ function ProductsSec() {
     cardWidthRef.current = width;
   };
 
-  const { productBundle, loading: productLoading, error: productError } = useSelector(
+  const { productBundle, loading: productLoading, error: productError } = useAppSelector(
     (state: RootState) => state.products,
   );
 

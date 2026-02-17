@@ -67,7 +67,13 @@ const initialState: ProductsState = {
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setProducts: (state, action) => {
+      state.productBundle = action.payload;
+      state.loading = false;
+      state.error = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProductsThunk.pending, (state) => {
@@ -86,5 +92,5 @@ const productSlice = createSlice({
       });
   },
 });
-
+export const { setProducts } = productSlice.actions;
 export default productSlice.reducer;

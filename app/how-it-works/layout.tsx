@@ -1,7 +1,6 @@
 // ./app/how-it-works/layout.tsx
 import type { Metadata } from "next";
 
-import Footer from "../../components/footer/footer";
 import Navbar from "../../components/header/navbar";
 
 export const metadata: Metadata = {
@@ -34,7 +33,6 @@ export default function HowItWorksLayout({
     <>
       <Navbar />
       {children}
-      <Footer />
     </>
   );
 }
