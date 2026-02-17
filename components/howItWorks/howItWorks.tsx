@@ -286,7 +286,7 @@ function HowItWorks() {
       id="howsec"
       className="flex flex-col justify-start items-center gap-50 w-full max-w-380 mx-auto px-6 lg:px-20 xl:px-30 mt-15 sm:mt-20 lg:mt-25 xl:mt-30"
     >
-      <p className="text-3xl sm:text-6xl w-[100%] sm:relative ml-5 mt-5 min:[540px]-text-center">
+      <p className="text-3xl sm:text-6xl md:text-2xl lg:text-xl w-[100%] sm:relative ml-5 mt-5 max-[540px]:text-center font-semibold">
         How it Works
       </p>
 

@@ -73,7 +73,13 @@ const initialState: FAQState = {
 const faqSlice = createSlice({
   name: "faq",
   initialState,
-  reducers: {},
+  reducers: {
+    setFAQs: (state, action) => {
+      state.faqs = action.payload;
+      state.loading = false;
+      state.error = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFAQThunk.pending, (state) => {
@@ -82,6 +88,7 @@ const faqSlice = createSlice({
       })
       .addCase(fetchFAQThunk.fulfilled, (state, action) => {
         state.faqs = action.payload;
+        state.error = false;
         state.loading = false;
         console.log(state.faqs);
       })
@@ -91,5 +98,5 @@ const faqSlice = createSlice({
       });
   },
 });
-
+export const { setFAQs } = faqSlice.actions;
 export default faqSlice.reducer;
