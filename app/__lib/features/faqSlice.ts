@@ -82,6 +82,7 @@ const faqSlice = createSlice({
       })
       .addCase(fetchFAQThunk.fulfilled, (state, action) => {
         state.faqs = action.payload;
+        state.error = false;
         state.loading = false;
         console.log(state.faqs);
       })

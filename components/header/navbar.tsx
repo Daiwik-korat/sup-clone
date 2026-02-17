@@ -13,9 +13,13 @@ function Navbar() {
     null,
   );
 
-  const { productBundle, loading: productLoading } = useSelector(
+  const { productBundle, loading: productLoading, error: productError } = useSelector(
     (state: RootState) => state.products,
   );
+
+  if (productError && !productLoading) {
+    throw new Error("Products Failed to load");
+  }
 
   const groupedData: GroupedData[] = useMemo(() => {
     if (!productBundle.products || productBundle.products.length === 0)

@@ -80,6 +80,7 @@ const reviewSlice = createSlice({
       .addCase(fetchTestiThunk.fulfilled, (state, action) => {
         state.review = action.payload;
         state.loading = false;
+        state.error = false
         console.log(state.review);
       })
       .addCase(fetchTestiThunk.rejected, (state) => {

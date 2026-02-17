@@ -17,9 +17,14 @@ function ProductsSec() {
     cardWidthRef.current = width;
   };
 
-  const { productBundle, loading: productLoading } = useSelector(
+  const { productBundle, loading: productLoading, error: productError } = useSelector(
     (state: RootState) => state.products,
   );
+
+  if (productError && !productLoading) {
+    throw new Error("Products Failed to load");
+  }
+
   const products: Product[] = productBundle.products;
 
   const animateSliderRight = () => {

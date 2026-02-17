@@ -77,6 +77,7 @@ const productSlice = createSlice({
       .addCase(fetchProductsThunk.fulfilled, (state, action) => {
         state.productBundle = action.payload;
         state.loading = false;
+        state.error = false;
         console.log(state.productBundle);
       })
       .addCase(fetchProductsThunk.rejected, (state) => {

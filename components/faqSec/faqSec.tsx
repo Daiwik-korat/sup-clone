@@ -7,11 +7,15 @@ import FAQ from "./faq";
 function FAQSec() {
   const [openId, setOpenId] = useState<number>(0);
 
-  const { faqs, loading, error } = useSelector(
+  const { faqs, loading: faqLoading, error: faqError } = useSelector(
     (state: RootState) => state.faqs,
   );
 
-  if (loading === true) {
+  if(!faqLoading && faqError) {
+    throw new Error("FAQs Failed to load");
+  }
+
+  if (faqLoading === true) {
     return (
       <>
         <section className="w-screen flex justify-center items-center">

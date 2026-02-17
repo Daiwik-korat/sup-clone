@@ -13,6 +13,10 @@ function TestimonialSec() {
     error: reviewError,
   } = useSelector((state: RootState) => state.review);
 
+  if(!reviewLoading && reviewError) {
+    throw new Error("Testimonials Failed to load");
+  }
+
   const slider = useRef<HTMLDivElement>(null);
   const cardWidthRef = useRef<number>(0);
 
