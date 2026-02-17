@@ -1,5 +1,5 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/app/__lib/hooks";
 import { RootState } from "@/app/__lib/store";
 import { useRef } from "react";
 import TestimonialCard from "./TestimonialCard";
@@ -11,7 +11,11 @@ function TestimonialSec() {
     review,
     loading: reviewLoading,
     error: reviewError,
-  } = useSelector((state: RootState) => state.review);
+  } = useAppSelector((state: RootState) => state.review);
+
+  if(!reviewLoading && reviewError) {
+    throw new Error("Testimonials Failed to load");
+  }
 
   const slider = useRef<HTMLDivElement>(null);
   const cardWidthRef = useRef<number>(0);

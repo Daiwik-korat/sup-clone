@@ -70,7 +70,13 @@ const initialState: ReviewState = {
 const reviewSlice = createSlice({
   name: "review",
   initialState,
-  reducers: {},
+  reducers: {
+    setReviews: (state, action) => {
+      state.review = action.payload;
+      state.loading = false;
+      state.error = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTestiThunk.pending, (state) => {
@@ -80,6 +86,7 @@ const reviewSlice = createSlice({
       .addCase(fetchTestiThunk.fulfilled, (state, action) => {
         state.review = action.payload;
         state.loading = false;
+        state.error = false
         console.log(state.review);
       })
       .addCase(fetchTestiThunk.rejected, (state) => {
@@ -88,5 +95,5 @@ const reviewSlice = createSlice({
       });
   },
 });
-
+export const { setReviews } = reviewSlice.actions;
 export default reviewSlice.reducer;

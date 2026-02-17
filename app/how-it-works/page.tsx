@@ -1,25 +1,38 @@
 // .app/how-it-works/page
 
-import Navbar from "../../components/header/navbar";
 import HowHero from "../../components/hero/How";
 import Process from "../../components/GetClarity/Process";
 import GuideSec from "../../components/guideSec/guideSec";
-import FAQSec from "../../components/faqSec/faqSec";
-import Footer from "../../components/footer/footer";
 import Statastics from "../../components/statasticsSec/statastics";
 import ActionPlan from "../../components/actionPlan/actionPlan";
+import Footer from "../../components/footer/footer";
+import FAQSec from "../../components/faqSec/faqSec";
+import { getProductsData, getFAQData, getReviewData } from "../__lib/api";
+import StoreInitializer from "../__lib/StoreInitializer";
 
-export default function Page() {
+export default async function Page() {
+  const [productData, faqData, reviewData] = await Promise.all([
+    getProductsData(),
+    getFAQData(),
+    getReviewData(),
+  ]);
+
   return (
     <>
-      <Navbar />
-      <HowHero />
-      <Process />
-      <GuideSec />
-      <Statastics />
-      <ActionPlan />
-      <FAQSec />
-      <Footer />
+      <main>
+        <StoreInitializer
+          products={productData}
+          faqs={faqData}
+          reviews={reviewData}
+        />
+        <HowHero />
+        <Process />
+        <GuideSec />
+        <Statastics />
+        <ActionPlan />
+        <FAQSec />
+        <Footer />
+      </main>
     </>
   );
 }

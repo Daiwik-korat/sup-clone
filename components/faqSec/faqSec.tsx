@@ -1,5 +1,5 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/app/__lib/hooks";
 import { RootState } from "@/app/__lib/store";
 import { useState } from "react";
 import FAQ from "./faq";
@@ -7,11 +7,15 @@ import FAQ from "./faq";
 function FAQSec() {
   const [openId, setOpenId] = useState<number>(0);
 
-  const { faqs, loading, error } = useSelector(
+  const { faqs, loading: faqLoading, error: faqError } = useAppSelector(
     (state: RootState) => state.faqs,
   );
 
-  if (loading === true) {
+  if(!faqLoading && faqError) {
+    throw new Error("FAQs Failed to load");
+  }
+
+  if (faqLoading === true) {
     return (
       <>
         <section className="w-screen flex justify-center items-center">
