@@ -13,7 +13,6 @@ import TestimonialSection from "../components/testimonial/TestimonialSection";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <FeatureHighlight />
       <HowitWorks />
@@ -21,7 +20,6 @@ export default function Home() {
       <Membership />
       <TestimonialSection />
       <FAQSec />
-      <Footer />
     </>
   );
 }
