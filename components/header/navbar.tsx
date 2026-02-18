@@ -49,12 +49,12 @@ function Navbar() {
     <>
       <header
         onMouseLeave={handleHeaderLeave}
-        className="min-[991px]:bg-black/70 bg-white/70 fixed inset-x-0 z-999 h-15 min-[991px]:text-white text-black lg:h-18 flex justify-between w-full backdrop-blur-xl max-[991px]:backdrop-blur-md lg:w-[95%] px-5 lg:rounded-full items-center max-w-[85rem] lg:mt-8 lg:pl-6 pb-[0] lg:pr-[0.5rem] lg:mx-auto"
+        className="min-[1024px]:bg-black/70 bg-white/70 fixed inset-x-0 z-999 h-15 min-[1024px]:text-white text-black lg:h-18 flex justify-between w-full backdrop-blur-xl max-[1024px]:backdrop-blur-md lg:w-[95%] px-5 lg:rounded-full items-center max-w-[85rem] lg:mt-8 lg:pl-6 pb-[0] lg:pr-[0.5rem] lg:mx-auto"
       >
         {" "}
         <div className="flex-none flex items-center justify-start mt-2">
           <div className="w-32 lg:w-40">
-            <Link href="/">
+            <Link href="/" className="w-32 lg:w-40 block">
               <svg
                 width="100%"
                 height="100%"

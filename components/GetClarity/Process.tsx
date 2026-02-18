@@ -2,7 +2,7 @@ import Steps from "./Steps";
 
 export default function Process() {
   return (
-    <section className="w-full min-h-screen bg-white py-20">
+    <section className="w-full min-h-screen bg-white py-20 lg:mt-0 -mt-15 rounded-3xl">
       <div className="w-full mb-16 px-4">
         <div className="flex flex-col items-center gap-2">
           <p className="text-center font-semibold opacity-60 text-lg md:text-xl">

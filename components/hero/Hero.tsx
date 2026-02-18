@@ -20,7 +20,6 @@ function Hero() {
             end: "bottom top",
             scrub: 1,
             pin: true,
-            pinSpacing: true,
           },
         });
       },
@@ -52,7 +51,7 @@ function Hero() {
       className="
           relative 
           overflow-hidden 
-          w-screen h-screen 
+          w-full h-screen 
           lg:w-full lg:h-full lg:rounded-2xl 
           flex 
           items-end         

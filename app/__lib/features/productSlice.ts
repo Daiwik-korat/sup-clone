@@ -36,8 +36,12 @@ export const fetchProductsThunk = createAsyncThunk<ProductBundle>(
     });
 
     const json = await res.json();
-    const rawBundles =
-      json.data.organizationPartnerIntegrationPublicInfo.productBundles;
+    if (json.errors) {
+        console.error("GraphQL Errors:", json.errors);
+        throw new Error(json.errors[0].message);
+      }
+
+      const rawBundles = json?.data?.organizationPartnerIntegrationPublicInfo?.productBundles;
 
     const products: Product[] = rawBundles.map((item: Product) => ({
       name: item.name,

@@ -184,7 +184,7 @@ function HowItWorks() {
 
             start: "top top",
 
-            end: "bottom top",
+            end: "+=2000",
 
             scrub: 1,
 
@@ -284,9 +284,9 @@ function HowItWorks() {
   return (
     <section
       id="howsec"
-      className="flex flex-col justify-start items-center gap-50 w-full h-screen max-h-1600 max-w-7xl mx-auto px-6 lg:px-20 xl:px-30 mt-15 sm:mt-20 lg:mt-25 xl:mt-30"
+      className="flex flex-col gap-22 lg:gap-28 xl:gap-30 justify-start items-center w-full max-w-[1440px] mx-auto px-6 lg:px-20 xl:px-30 mt-15 pt-35 sm:mt-20 lg:mt-25 xl:mt-30 pb-20 relative max-[768px]:overflow-hidden"
     >
-      <p className="text-[1.5rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] w-full sm:relative ml-5 text-center font-semibold">
+      <p className="text-[1.5rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[4rem] w-full sm:relative ml-5 max-[470px]text-center">
         How it Works
       </p>
 

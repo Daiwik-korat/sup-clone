@@ -99,7 +99,7 @@ export function CatProducts({ products, onMouseExit }: PropsCatProducts) {
                     key={index}
                     onMouseEnter={() => setHoveredItem(index)}
                     onMouseLeave={() => setHoveredItem(null)}
-                    className={`p-3 rounded-lg bg-gray-50 text-sm transition-all duration-300 ease-out ${isHovered && "scale-105 bg-gray-100 text-gray-900"} ${isDimmed ? "opacity-40 scale-95" : "text-gray-700"}`}
+                    className={`p-3 rounded-lg bg-gray-50 text-sm transition-all duration-300 ease-out ${isHovered && "scale-105 bg-gray-100 text-gray-900"} ${isDimmed ? "opacity-40 scale-95 text-gray-700" : "text-gray-700"}`}
                   >
                     {item.name}
                   </li>

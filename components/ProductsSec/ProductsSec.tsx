@@ -56,7 +56,7 @@ function ProductsSec() {
   }
 
   return (
-    <section className="flex flex-col w-screen items-center justify-center py-5 md:py-10 lg:py-15">
+    <section className="flex flex-col w-full items-center justify-center py-5 md:py-10 lg:py-15">
       <div className="flex flex-col w-[90%] max-w-380 lg:w-[80%]">
         <div className="flex justify-between items-center w-full mb-6">
           <p className="text-black font-bold text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl">

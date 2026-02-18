@@ -2,8 +2,8 @@
 import { gsap } from "gsap";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import footerList from "../../app/__lib/constants/footerData.ts";
-import { aiLinks } from "../../app/__lib/constants/footerData.ts";
+import footerList from "./footerData.ts";
+import { aiLinks } from "./footerData.ts";
 
 function List({ link }: { link: string }) {
   const isHiring = link.includes("[We're hiring!]");
@@ -133,7 +133,6 @@ function Footer() {
       className="relative w-full overflow-hidden bg-white pb-20 mt-30 sm:mt-35 md:mt-40 lg:mt-50"
     >
       <div className="flex flex-col w-full gap-50">
-        {/* Logo + Links */}
         <div>
           <div className="relative w-full mb-10">
             <video
@@ -195,7 +194,6 @@ function Footer() {
         </div>
         <div>
           <div className="flex flex-col gap-30">
-            {/* AI Icons */}
             <div className="w-full flex sm:flex-row flex-col gap-10 justify-between px-10">
               <div className="flex flex-col w-[342px] gap-2">
                 <svg
@@ -248,7 +246,6 @@ function Footer() {
               </div>
             </div>
 
-            {/* CopyRights */}
             <div className="flex flex-col w-[90vw] mx-auto items-center justify-center opacity-65 gap-4">
               <hr className="w-full sm:block hidden"></hr>
               <div className="flex sm:flex-col flex-col-reverse md:flex-row sm:justify-between w-full text-[14px] gap-y-4">

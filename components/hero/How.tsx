@@ -19,7 +19,7 @@ function HowHero() {
       >
         <div className="rounded-2xl w-full flex justify-center bg-[radial-gradient(circle_at_60%,#7a725f,#464133)] min-h-160 pt-25 relative">
           <div className="flex min-[991px]:flex-row flex-col justify-between w-full max-w-340 px-6 sm:px-10">
-            <div className="flex flex-col mb-10 min-[991px]:mb-20  min-[991px]:justify-center">
+            <div className="flex flex-col  mb-10 min-[991px]:mb-20  min-[991px]:justify-center">
               <p className="max-[767px]:text-[3.5rem] font-semibold text-[4rem] text-white max-w-100">
                 How it Works
               </p>

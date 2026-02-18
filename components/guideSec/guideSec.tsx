@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 
-// Removed Draggable registration
 gsap.registerPlugin(useGSAP);
 
 interface DataItem {
@@ -56,7 +55,6 @@ function GuideSec() {
     return -(firstCardWidth + gap);
   };
 
-  // contextSafe is still needed for the button handlers to work with GSAP memory management
   const { contextSafe } = useGSAP({ scope: containerRef });
 
   const handleButtonClick = contextSafe((direction: "left" | "right") => {
@@ -135,7 +133,6 @@ function GuideSec() {
 
         <div
           ref={containerRef}
-          // Removed: touch-none, cursor-grab, active:cursor-grabbing
           className="flex w-full gap-6 pb-4"
         >
           {GUIDE_DATA.map((item, index) => (

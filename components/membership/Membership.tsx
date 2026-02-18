@@ -12,7 +12,7 @@ const benefits = [
 ];
 
 const imagesurl = [
-  "/Master_Card.png",
+  "https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68735de71136bc431f931f0a_membership-sku-1.avif",
   "https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/688046649437614ee5ce9828_SKU%20Frame%202.avif",
   "https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/688a8c0fd46fba51230bdfcc_image%20(6).avif",
   "https://cdn.prod.website-files.com/63792ff4f3d6aa3d62071b61/68a4d57ea732f68822a4d11e_image%20(13).avif",
@@ -39,6 +39,7 @@ function NavImage(props: {
       className={`${baseClass} ${activeClass}`}
       onClick={() => props.func(props.index)}
     >
+      
       <Image
         src={props.url}
         fill
@@ -50,20 +51,19 @@ function NavImage(props: {
   );
 }
 
-function ImageShow({ number }: { number: number }) {
+function ImageShow({ number}: { number: number;}) {
   const imgUrl = imagesurl[number];
-
   if (!imgUrl) return null;
 
   return (
-    <div className="w-full flex items-center justify-center p-4">
+    <div className="relative w-full h-full p-6">
       <Image
         src={imgUrl}
-        width={0}
-        height={0}
+        fill
         sizes="(max-width: 768px) 100vw, 800px"
-        className="w-full h-auto max-h-[600px] object-contain rounded-xl"
+        className="object-contain rounded-xl"
         alt="Preview"
+        priority={true}
       />
     </div>
   );
@@ -72,35 +72,53 @@ function ImageShow({ number }: { number: number }) {
 function ImagePlaceHolder({ targetNumber }: { targetNumber: number }) {
   const [visibleNumber, setVisibleNumber] = useState(targetNumber);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMounted = useRef(false);
 
   useEffect(() => {
-    if (targetNumber !== visibleNumber) {
-      const ctx = gsap.context(() => {
-        gsap.to(containerRef.current, {
-          opacity: 0,
-          duration: 0.25,
-          onComplete: () => {
-            setVisibleNumber(targetNumber);
-
-            gsap.to(containerRef.current, {
-              opacity: 1,
-              duration: 0.35,
-            });
-          },
-        });
-      }, containerRef);
-
-      return () => ctx.revert();
+    if (!isMounted.current) {
+      isMounted.current = true;
+      gsap.set(containerRef.current, { opacity: 1 });
+      return;
     }
-  }, [targetNumber, visibleNumber]);
+
+    if (targetNumber !== visibleNumber) {
+      gsap.to(containerRef.current, {
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: () => {
+          setVisibleNumber(targetNumber);
+        },
+      });
+    }
+  }, [targetNumber]);
+
+  useEffect(() => {
+    if (!isMounted.current) return;
+    gsap.fromTo(
+      containerRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.4, ease: "power2.out" },
+    );
+  }, [visibleNumber]);
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center">
-      {visibleNumber === 0 ? (
-        <MasterCard />
-      ) : (
-        <ImageShow number={visibleNumber} />
-      )}
+    <div
+      ref={containerRef}
+      className="w-full h-full flex items-center justify-center opacity-0"
+    >
+      <div
+        key={visibleNumber}
+        className="w-full h-full flex items-center justify-center"
+      >
+        {visibleNumber === 0 ? (
+          <div className="w-full max-w-[90%]">
+            <MasterCard />
+          </div>
+        ) : (
+          <ImageShow number={visibleNumber} />
+        )}
+      </div>
     </div>
   );
 }
@@ -112,7 +130,7 @@ function Membership() {
     <section className="flex items-start justify-center w-full mt-3 sm:mt-6 md:mt-10 px-4 max-[991px]:px-6">
       <div className="flex flex-col min-[991px]:flex-row items-stretch gap-8 w-full min-[991px]:w-[85vw] max-w-300">
         <div className="flex flex-1 flex-col gap-3 w-full">
-          <div className="w-full rounded-3xl border border-[#e4e4e7] bg-white overflow-hidden relative flex items-center justify-center min-h-100">
+          <div className="w-full rounded-3xl border border-[#e4e4e7] bg-white overflow-hidden relative h-[450px] sm:h-[550px] md:h-[650px]">
             <ImagePlaceHolder targetNumber={activeImage} />
           </div>
 

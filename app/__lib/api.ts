@@ -7,11 +7,18 @@ const getEnv = () => {
   };
 };
 
-export async function getProductsData() {
-  const { URL, name } = getEnv();
-  if (!URL || !name) throw new Error("Env missing");
+const FAQquery = `
+    query GetFAQs($linkName: String) {
+      organizationPartnerIntegrationPublicInfo(linkName: $linkName) {
+        faq { 
+        answer 
+        question 
+        }
+      }
+    }
+  `;
 
-  const query = `
+const Productquery = `
     query GetProducts($linkName: String) {
       organizationPartnerIntegrationPublicInfo(linkName: $linkName) {
         productBundles { name imageUrl price tag }
@@ -19,17 +26,38 @@ export async function getProductsData() {
     }
   `;
 
+const Reviewquery = `
+    query GetReviews($linkName: String) {
+      organizationPublicTestimonials(linkName: $linkName) {
+        content 
+        createdAt 
+        isVerified 
+        rating 
+        customerName 
+        title
+      }
+    }
+  `;
+
+export async function getProductsData() {
+  const { URL, name } = getEnv();
+  if (!URL || !name) throw new Error("Env missing");
+
   try {
     const res = await fetch(URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, variables: { linkName: name } }),
+      body: JSON.stringify({
+        query: Productquery, 
+        variables: { linkName: name },
+      }),
       cache: "no-store",
     });
 
     const json = await res.json();
     return {
-      products: json.data.organizationPartnerIntegrationPublicInfo.productBundles,
+      products:
+        json.data.organizationPartnerIntegrationPublicInfo.productBundles,
     };
   } catch (e) {
     console.error("Product Fetch Error", e);
@@ -41,22 +69,14 @@ export async function getFAQData() {
   const { URL, name } = getEnv();
   if (!URL || !name) return FAQ_FALLBACKs;
 
-  const query = `
-    query GetFAQs($linkName: String) {
-      organizationPartnerIntegrationPublicInfo(linkName: $linkName) {
-        faq { 
-        answer 
-        question 
-        }
-      }
-    }
-  `;
-
   try {
     const res = await fetch(URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, variables: { linkName: name } }),
+      body: JSON.stringify({
+        query: FAQquery,
+        variables: { linkName: name },
+      }),
       cache: "no-store",
     });
 
@@ -73,24 +93,14 @@ export async function getReviewData() {
   const { URL, name } = getEnv();
   if (!URL || !name) return [];
 
-  const query = `
-    query GetReviews($linkName: String) {
-      organizationPublicTestimonials(linkName: $linkName) {
-        content 
-        createdAt 
-        isVerified 
-        rating 
-        customerName 
-        title
-      }
-    }
-  `;
-
   try {
     const res = await fetch(URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, variables: { linkName: name } }),
+      body: JSON.stringify({
+        query: Reviewquery,
+        variables: { linkName: name },
+      }),
       cache: "no-store",
     });
     const json = await res.json();
