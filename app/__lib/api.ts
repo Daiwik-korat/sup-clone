@@ -1,4 +1,5 @@
 import FAQ_FALLBACKs from "./constants/faqFallback";
+import { ProductBundle, FAQ, Review } from "@/app/__lib/types";
 
 const getEnv = () => {
   return {
@@ -39,7 +40,8 @@ const Reviewquery = `
     }
   `;
 
-export async function getProductsData() {
+
+export async function getProductsData(): Promise<ProductBundle> {
   const { URL, name } = getEnv();
   if (!URL || !name) throw new Error("Env missing");
 
@@ -48,16 +50,15 @@ export async function getProductsData() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        query: Productquery, 
+        query: Productquery,
         variables: { linkName: name },
       }),
       cache: "no-store",
     });
 
-    const json = await res.json();
+    const json: { data: { organizationPartnerIntegrationPublicInfo: { productBundles: ProductBundle["products"] } } } = await res.json();
     return {
-      products:
-        json.data.organizationPartnerIntegrationPublicInfo.productBundles,
+      products: json.data.organizationPartnerIntegrationPublicInfo.productBundles,
     };
   } catch (e) {
     console.error("Product Fetch Error", e);
@@ -65,7 +66,7 @@ export async function getProductsData() {
   }
 }
 
-export async function getFAQData() {
+export async function getFAQData(): Promise<FAQ[]> {
   const { URL, name } = getEnv();
   if (!URL || !name) return FAQ_FALLBACKs;
 
@@ -81,7 +82,8 @@ export async function getFAQData() {
     });
 
     if (!res.ok) return FAQ_FALLBACKs;
-    const json = await res.json();
+
+    const json: { data: { organizationPartnerIntegrationPublicInfo: { faq: FAQ[] } } } = await res.json();
     const data = json.data.organizationPartnerIntegrationPublicInfo.faq;
     return data.length > 0 ? data : FAQ_FALLBACKs;
   } catch (e) {
@@ -89,7 +91,7 @@ export async function getFAQData() {
   }
 }
 
-export async function getReviewData() {
+export async function getReviewData(): Promise<Review[]> {
   const { URL, name } = getEnv();
   if (!URL || !name) return [];
 
@@ -103,8 +105,9 @@ export async function getReviewData() {
       }),
       cache: "no-store",
     });
-    const json = await res.json();
-    return json.data.organizationPublicTestimonials || [];
+
+    const json: { data: { organizationPublicTestimonials: Review[] } } = await res.json();
+    return json.data.organizationPublicTestimonials ?? [];
   } catch (e) {
     return [];
   }

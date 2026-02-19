@@ -27,3 +27,25 @@ export interface Review {
   title: string;
   rating: number;
 }
+
+export interface ProductsResponse {
+  data: {
+    organizationPartnerIntegrationPublicInfo: {
+      productBundles: Product[];
+    };
+  };
+}
+
+export interface FAQResponse {
+  data: {
+    organizationPartnerIntegrationPublicInfo: {
+      faq: FAQ[];
+    };
+  };
+}
+
+export interface ReviewResponse {
+  data: {
+    organizationPublicTestimonials: Review[];
+  };
+}
