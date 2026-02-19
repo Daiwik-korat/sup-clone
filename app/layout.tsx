@@ -1,4 +1,4 @@
-// ./app/layout.tsx
+
 import type { Metadata } from "next";
 import StoreProvider from "./__lib/StoreProvider";
 import Navbar from "../components/header/navbar";

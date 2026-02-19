@@ -1,4 +1,4 @@
-// ./app/how-it-works/layout.tsx
+
 import type { Metadata } from "next";
 
 import Navbar from "../../components/header/navbar";

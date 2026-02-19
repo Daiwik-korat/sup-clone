@@ -1,4 +1,3 @@
-// .app/how-it-works/page
 
 import HowHero from "../../components/hero/How";
 import Process from "../../components/GetClarity/Process";

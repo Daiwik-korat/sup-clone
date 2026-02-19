@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react"; // Import useEffect
+import { useRef, useEffect } from "react";
 import { useAppDispatch } from "@/app/__lib/hooks";
 import { setProducts } from "@/app/__lib/features/productSlice";
 import { setFAQs } from "@/app/__lib/features/faqSlice";

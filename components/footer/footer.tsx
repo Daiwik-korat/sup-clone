@@ -80,11 +80,9 @@ function Listing(props: { links: string[]; heading: string }) {
   };
 
   return (
-    // CHANGED: Removed pb-4 here. The border now sits tight against the header when closed.
     <div className="flex flex-col border-b border-black/10 min-[991px]:border-none">
       <div
         onClick={toggleAccordion}
-        // CHANGED: Added py-3 for better touch target/vertical centering. Removed mb-1.
         className={`flex justify-between items-center py-3 ${
           isMobile ? "cursor-pointer" : "cursor-default"
         }`}
@@ -99,7 +97,6 @@ function Listing(props: { links: string[]; heading: string }) {
             xmlnsXlink="http://www.w3.org/1999/xlink"
             aria-hidden="true"
             role="img"
-            // Simple rotation logic for the chevron
             className={`iconify iconify--ic w-full h-full transition-transform duration-300 ${
               isOpen ? "rotate-180" : "rotate-0"
             }`}
@@ -115,7 +112,6 @@ function Listing(props: { links: string[]; heading: string }) {
       </div>
 
       <div ref={contentRef} className="overflow-hidden min-[991px]:h-auto">
-        {/* CHANGED: Added pb-3 here. Padding only exists when content is open. */}
         <div className="flex flex-col gap-3 pt-1 pb-3 min-[991px]:pt-0 min-[991px]:pb-0">
           {props.links.map((item, index) => (
             <List key={index} link={item} />
@@ -136,13 +132,10 @@ function Footer() {
   return (
     <section
       id="footer"
-      // CHANGED: Reduced mobile top margin (mt-16) -> scales to mt-50 on lg
       className="relative w-full overflow-hidden bg-white pb-10 lg:pb-20 mt-16 sm:mt-24 md:mt-32 lg:mt-50"
     >
-      {/* CHANGED: Reduced gap-50 to gap-16 on mobile -> scales to gap-50 on lg */}
       <div className="flex flex-col w-full gap-16 lg:gap-50">
         <div className="w-full px-6 lg:px-12">
-          {/* --- Video/Logo Section --- */}
           <div className="relative w-full mb-10">
             <video
               autoPlay
@@ -179,8 +172,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* --- Listings Section --- */}
-          {/* CHANGED: gap-y-6 became gap-y-0. This removes space between accordions on mobile */}
           <div className="grid grid-cols-1 min-[991px]:grid-cols-5 gap-y-0 min-[991px]:gap-y-6 min-[991px]:gap-x-8">
             {mainColumns.map((item, index) => (
               <Listing
@@ -190,7 +181,6 @@ function Footer() {
               />
             ))}
 
-            {/* CHANGED: gap-6 became gap-0 on mobile */}
             <div className="flex flex-col gap-0 min-[991px]:gap-6">
               {groupedColumns.map((item, index) => (
                 <Listing
@@ -203,9 +193,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* --- Bottom Footer Info --- */}
         <div>
-          {/* CHANGED: Reduced gap-30 to gap-16 on mobile */}
           <div className="flex flex-col gap-16 lg:gap-30">
             <div className="w-full flex sm:flex-row flex-col gap-10 justify-between px-6 lg:px-10">
               <div className="flex flex-col w-full sm:w-[342px] gap-2">
