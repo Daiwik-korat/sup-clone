@@ -1,29 +1,16 @@
 "use client";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
 
 interface Props {
   url: string;
   name: string;
   category: string;
   price: number;
-  ChangeFun?: (num: number) => void;
 }
 
 function ProductCard(props: Props) {
-  const elementRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (elementRef.current && props.ChangeFun) {
-      props.ChangeFun(elementRef.current.offsetWidth);
-    }
-  }, [props.ChangeFun]);
-
   return (
-    <div
-      ref={elementRef}
-      className="w-full sm:w-[300px] md:w-[45%] lg:w-[30%] xl:w-[23%] shrink-0 select-none snap-start "
-    >
+    <div className="w-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] shrink-0 select-none">
       <div className="bg-gray-100 rounded-lg p-4 h-full flex flex-col justify-between hover:shadow-lg duration-300 transition-all hover:shadow-black-300 hover:scale-105">
         <div className="flex flex-col items-center w-full mb-4">
           <div className="relative w-full h-48 mb-3">
@@ -41,10 +28,7 @@ function ProductCard(props: Props) {
         </div>
 
         <div className="flex flex-col items-start w-full gap-1 border-gray-200 pt-2">
-          <h3
-            className="text-lg font-bold text-gray-800 w-full truncate"
-            title={props.name}
-          >
+          <h3 className="text-lg font-bold text-gray-800 w-full truncate" title={props.name}>
             {props.name}
           </h3>
           <p className="text-amber-600 font-bold text-xl">${props.price}</p>

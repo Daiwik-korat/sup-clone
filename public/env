@@ -1,0 +1,8 @@
+DATABASE_URL="postgresql://macbookpro@127.0.0.1:5432/crm"
+READ_REPLICA_URL="postgresql://macbookpro@127.0.0.1:5432/crm"
+DATABASE_URL="postgresql://kindred_admin:K!ndr3dpSQL2025@kindred-postgresql-stg.cf2wg2mo4bde.ap-southeast-1.rds.amazonaws.com:5432/crm"
+AUTHORIZER_URL="https://api-stg.mykindred.co/services/auth/v1"
+AUTHORIZER_GENERATE_PATH="/api/authorizer/generate"
+AUTHORIZER_VALIDATE_PATH="/api/authorizer/validate"
+TOKEN_SECRET="?PJ^)c+u@+&T*#S"
+JWT_ALGORITHM="HS256"

@@ -1,10 +1,9 @@
 "use client";
 import GuideCard from "./guideCard";
-import { useGSAP } from "@gsap/react";
-import { useRef, useState } from "react";
-import gsap from "gsap";
-
-gsap.registerPlugin(useGSAP);
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/css";
 
 interface DataItem {
   imgUrl: string;
@@ -40,32 +39,9 @@ const GUIDE_DATA: DataItem[] = [
 ];
 
 function GuideSec() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isRightEnabled, setIsRightEnabled] = useState(true);
-
-  const getTargetX = () => {
-    if (!containerRef.current) return 0;
-    const cards = containerRef.current.children;
-    const firstCardWidth = (cards[0] as HTMLElement).offsetWidth;
-    const gap = 24;
-    const width = window.innerWidth;
-
-    if (width > 991) return -(firstCardWidth + gap);
-    if (width > 460) return -(containerRef.current.offsetWidth + gap);
-    return -(firstCardWidth + gap);
-  };
-
-  const { contextSafe } = useGSAP({ scope: containerRef });
-
-  const handleButtonClick = contextSafe((direction: "left" | "right") => {
-    const targetX = direction === "right" ? getTargetX() : 0;
-    gsap.to(containerRef.current, {
-      x: targetX,
-      duration: 0.6,
-      ease: "power3.inOut",
-      onComplete: () => setIsRightEnabled(direction === "left"),
-    });
-  });
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   return (
     <section className="w-screen px-4 pt-16 overflow-x-hidden flex flex-col">
@@ -84,9 +60,10 @@ function GuideSec() {
 
           <div className="flex gap-2 shrink-0 items-center min-w-25">
             <button
-              onClick={() => handleButtonClick("left")}
+              onClick={() => swiperInstance?.slidePrev()}
+              disabled={isBeginning}
               className={`rounded-full p-3 shadow-md transition-all duration-300 border ${
-                isRightEnabled
+                isBeginning
                   ? "cursor-not-allowed border-gray-100"
                   : "cursor-pointer border-gray-200"
               }`}
@@ -97,7 +74,7 @@ function GuideSec() {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke={isRightEnabled ? "#d1d5db" : "black"}
+                stroke={isBeginning ? "#d1d5db" : "black"}
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -107,9 +84,10 @@ function GuideSec() {
             </button>
 
             <button
-              onClick={() => handleButtonClick("right")}
+              onClick={() => swiperInstance?.slideNext()}
+              disabled={isEnd}
               className={`rounded-full p-3 shadow-md transition-all duration-300 border ${
-                !isRightEnabled
+                isEnd
                   ? "cursor-not-allowed border-gray-100"
                   : "cursor-pointer border-gray-200"
               }`}
@@ -120,7 +98,7 @@ function GuideSec() {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke={!isRightEnabled ? "#d1d5db" : "black"}
+                stroke={isEnd ? "#d1d5db" : "black"}
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -131,19 +109,26 @@ function GuideSec() {
           </div>
         </div>
 
-        <div
-          ref={containerRef}
-          className="flex w-full gap-6 pb-4"
+        <Swiper
+          onSwiper={setSwiperInstance}
+          onSlideChange={(swiper) => {
+            setIsBeginning(swiper.isBeginning);
+            setIsEnd(swiper.isEnd);
+          }}
+          slidesPerView="auto"
+          spaceBetween={24}
+          className="w-full pb-4"
         >
           {GUIDE_DATA.map((item, index) => (
-            <GuideCard
-              key={index}
-              url={item.imgUrl}
-              title={item.title}
-              desc={item.desc}
-            />
+            <SwiperSlide key={index} className="!w-auto flex shrink-0">
+              <GuideCard
+                url={item.imgUrl}
+                title={item.title}
+                desc={item.desc}
+              />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
 
         <div>
           <a

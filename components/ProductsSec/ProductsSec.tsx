@@ -1,21 +1,17 @@
 "use client";
+import "swiper/css";
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+
 import ProductCard from "./productCard";
 import { useAppSelector } from "@/app/__lib/hooks";
 import { RootState } from "@/app/__lib/store";
 import { Product } from "@/app/__lib/types";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-import gsap from "gsap";
-
-gsap.registerPlugin(useGSAP);
 
 function ProductsSec() {
-  const slider = useRef<HTMLDivElement>(null);
-  const cardWidthRef = useRef<number>(0);
-
-  const handleCardWidth = (width: number) => {
-    cardWidthRef.current = width;
-  };
+  const swiperRef = useRef<SwiperType>(null);
 
   const { productBundle, loading: productLoading, error: productError } = useAppSelector(
     (state: RootState) => state.products,
@@ -26,30 +22,6 @@ function ProductsSec() {
   }
 
   const products: Product[] = productBundle.products;
-
-  const animateSliderRight = () => {
-    if (slider.current) {
-      const scrollAmount = cardWidthRef.current;
-
-      gsap.to(slider.current, {
-        scrollLeft: slider.current.scrollLeft + scrollAmount,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    }
-  };
-
-  const animateSliderLeft = () => {
-    if (slider.current) {
-      const scrollAmount = cardWidthRef.current;
-
-      gsap.to(slider.current, {
-        scrollLeft: slider.current.scrollLeft - scrollAmount,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    }
-  };
 
   if (productLoading) {
     return <div className="text-center p-10">Loading Products...</div>;
@@ -64,59 +36,45 @@ function ProductsSec() {
           </p>
           <div className="flex gap-2">
             <button
-              onClick={animateSliderLeft}
-              className="rounded-full bg-amber-200 p-3 shadow-md hover:bg-white active:scale-95 transition-all"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="rounded-full bg-amber-200 p-3 shadow-md hover:bg-white active:scale-95 transition-all z-10"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m15 18-6-6 6-6" />
               </svg>
             </button>
             <button
-              onClick={animateSliderRight}
-              className="rounded-full bg-amber-200 p-3 shadow-md hover:bg-white active:scale-95 transition-all"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="rounded-full bg-amber-200 p-3 shadow-md hover:bg-white active:scale-95 transition-all z-10"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 18 6-6-6-6" />
               </svg>
             </button>
           </div>
         </div>
 
-        <div
-          ref={slider}
-          className="relative w-full flex overflow-hidden gap-4 no-scrollbar pb-4 pt-10"
+        <Swiper
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          modules={[Navigation]}
+          spaceBetween={16} 
+          slidesPerView={"auto"} 
+          grabCursor={true} 
+          className="w-full pb-4 pt-10"
         >
           {products.map((item, index) => (
-            <ProductCard
-              key={index}
-              url={item.imageUrl}
-              name={item.name}
-              category={item.tag}
-              price={item.price}
-              ChangeFun={index === 0 ? handleCardWidth : undefined}
-            />
+            <SwiperSlide key={index} className="!w-auto"> 
+              <ProductCard
+                url={item.imageUrl}
+                name={item.name}
+                category={item.tag}
+                price={item.price}
+              />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );

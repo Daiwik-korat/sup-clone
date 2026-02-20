@@ -18,7 +18,8 @@
     "react-loading-skeleton": "^3.5.0",
     "react-parallax-tilt": "^1.7.319",
     "react-redux": "^9.2.0",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "swiper": "^12.1.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

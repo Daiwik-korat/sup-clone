@@ -22,7 +22,7 @@ export interface GroupedData {
 export interface Review {
   content: string;
   createdAt: Date;
-  isVerified: string;
+  isVerified: boolean;
   customerName: string;
   title: string;
   rating: number;
