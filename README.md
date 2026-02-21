@@ -60,10 +60,8 @@ Git WorkFlow as Asked.
 Available in gitRecord.txt in project directory (For Better abstration).
 
 8. Known Issues: 
-1. Not complete Pixel perfect UI.g Text, Components sizeing in width, height is different from original site.
-Scaling of UI components logic is builded independantly (Deciding Semantic tags use, CSS flex, grid layouting etc.)
-2. Because of Heavy animation, Moving widths and size of screen in inspects leads to breaking CSS and have to restart webpage and open inspect again.
-3. Product and FAQ Slider only Sliding through button (Has to add premade components for smoother implementation from bootstap or some other libraries).
+   Not complete Pixel perfect UI.g Text, Components sizeing in width, height is different from original site. Scaling of UI components logic is builded independantly (Deciding Semantic tags use, CSS flex, grid layouting etc.)
+   Because of Heavy animation, Moving widths and size of screen in inspects leads to breaking CSS and have to restart webpage and open inspect again.
 
 9. Deployment:
 Login into aws amplify
